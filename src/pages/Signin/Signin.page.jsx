@@ -9,7 +9,7 @@ class Signin extends Component {
             <div className={styles.signinContainer}>
                 <h1>Welcome to Serb<span style={{ color: '#4CAF50', fontSize: '60px' }}>AA</span>da Administrator</h1>
                 <div className={styles.signinWrap}>
-                    <h3 className={styles.singinH3}>Login to your account</h3>
+                    <h3>Login to your account</h3>
                     <form>
                         <input type="text" id="username" name="username" placeholder='Username' /><br /><br />
                         <input type="password" id="pword" name="pword" placeholder='Password' /><br /><br />
@@ -18,6 +18,7 @@ class Signin extends Component {
                         </label>
                         <input type="submit" value="Sign In" />
                     </form>
+                    <a href="/#">Didn't have an account?</a>
                 </div>
             </div>
         )
