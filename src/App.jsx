@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from "./App.module.css";
+import './themes/iconInitiation';
 import "./App.css";
 // import { Signin } from "./pages/Signin/Signin.page";
 // import { Home } from "./pages/Home/Home.page";
@@ -23,47 +25,16 @@ class App extends Component {
     return (
       <div className={styles.bodyContainer}>
         <div className={styles.upperNavbarContainer}>
-          <h1>upper navbar</h1>
+          <FontAwesomeIcon icon="bars" color="white" size="2x" onClick={this.onClickCollapse} className={styles.menuIcon}/>
         </div>
         <div className={styles.mainContainer}>
           <div className={`${styles.sideBarContainer} ${isSidebarCollapsed ? styles.sideBarContainerCollapse : null}`}>
-            <button onClick={this.onClickCollapse}>button woi</button>
+
           </div>
           <div className={`${styles.contentAndNavContainer} ${isSidebarCollapsed ? styles.contentAndNavContainerExpand : null}`}>
             <InnerNavbar isSidebarCollapsed={isSidebarCollapsed} />
             <div className={styles.contentContainer}>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
-              <h2>this is content</h2>
+
             </div>
           </div>
         </div>

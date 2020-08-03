@@ -12,12 +12,16 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 60px;
   background-color: #2a302d;
   -webkit-box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.17);
           box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.17);
   position: fixed;
   width: 100%;
+  padding: 0 20px;
   z-index: 1;
 }
 
@@ -62,5 +66,9 @@
 .contentContainer {
   margin-top: 120px;
   padding-left: 50px;
+}
+
+.menuIcon {
+  cursor: pointer;
 }
 /*# sourceMappingURL=App.module.css.map */

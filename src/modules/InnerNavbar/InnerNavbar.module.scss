@@ -3,11 +3,11 @@
 .innerNavbarContainer {
     height: 120px;
     width: 80vw;
+    display: flex;
     position: fixed;
     background-color: $white;
     align-self: center;
     align-items: center;
-    display: flex;
     border-bottom: 1px solid $boxShadow;
     transition: width 0.2s ease-in;
 }
