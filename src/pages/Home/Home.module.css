@@ -1,34 +1,10 @@
-.coba {
-    color: blue;
-}
-
-.fontnya {
-    font-size: 60px;
-}
-
 .homeContainer {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    top: 80px;
-    z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-
-.homeSubContainer {
-}
-
-.sidebarContainer {
-    flex: 1;
-    background-color: blue;
-    position: fixed;
-    width: 15%;
-}
-
-.mainContentContainer {
-    flex: 5;
-}
-
-.sideBarWhiteSpace {
-    width: 15%;
-    border: 1px black solid;
-}
+/*# sourceMappingURL=Home.module.css.map */

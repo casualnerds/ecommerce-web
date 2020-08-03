@@ -1,46 +1,30 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  BrowserRouter as Router,
+  Switch
+} from "react-router-dom";
+import { Provider } from 'react-redux';
 
-import styles from "./App.module.css";
+import { store } from './redux/store';
 import './themes/iconInitiation';
 import "./App.css";
-// import { Signin } from "./pages/Signin/Signin.page";
-// import { Home } from "./pages/Home/Home.page";
-import { InnerNavbar } from "./modules/InnerNavbar/InnerNavbar.module";
-// import { AddProduct } from "./pages/AddProduct/AddProduct.page";
+import { PrivateRoute } from './navigation/PrivateRoute';
+import { RestrictedRoute } from './navigation/RestrictedRoute';
+import { Dashboard } from './pages/Dashboard/Dashboard.page';
+import Signin from "./pages/Signin/Signin.container";
 
 class App extends Component {
 
-  state = {
-    isSidebarCollapsed: false
-  };
-
-  onClickCollapse = () => {
-    this.setState(prev => ({ isSidebarCollapsed: !prev.isSidebarCollapsed }));
-  }
-
   render() {
-    const { isSidebarCollapsed } = this.state;
-
     return (
-      <div className={styles.bodyContainer}>
-        <div className={styles.upperNavbarContainer}>
-          <FontAwesomeIcon icon="bars" color="white" size="2x" onClick={this.onClickCollapse} className={styles.menuIcon}/>
-        </div>
-        <div className={styles.mainContainer}>
-          <div className={`${styles.sideBarContainer} ${isSidebarCollapsed ? styles.sideBarContainerCollapse : null}`}>
-
-          </div>
-          <div className={`${styles.contentAndNavContainer} ${isSidebarCollapsed ? styles.contentAndNavContainerExpand : null}`}>
-            <InnerNavbar isSidebarCollapsed={isSidebarCollapsed} />
-            <div className={styles.contentContainer}>
-
-            </div>
-          </div>
-        </div>
-        {/* <Signin /> */}
-        {/*<Home /> */}
-      </div>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <PrivateRoute exact path="/" component={Dashboard} />
+            <RestrictedRoute path="/signin" component={Signin} />
+          </Switch>
+        </Router>
+      </Provider>
     );
   }
 }

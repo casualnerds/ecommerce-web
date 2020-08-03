@@ -1,0 +1,23 @@
+@import '../../themes/colors';
+
+.upperNavbarContainer {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: $outerSpace;
+    box-shadow: 0 5px 20px 5px $boxShadow;
+    position: fixed;
+    width: 100%;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.menuIcon {
+    cursor: pointer;
+
+    transition: transform 0.2s ease-in;
+}
+
+.menuIconExpand {
+    transform: rotate(90deg);
+}
