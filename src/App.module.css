@@ -1,0 +1,66 @@
+.bodyContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.upperNavbarContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 60px;
+  background-color: #2a302d;
+  -webkit-box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.17);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.mainContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 60px;
+}
+
+.sideBarContainer {
+  position: fixed;
+  background-color: #2a302d;
+  width: 15vw;
+  height: 100vh;
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+}
+
+.sideBarContainerCollapse {
+  width: 4vw;
+}
+
+.contentAndNavContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 15vw;
+  width: 100%;
+  -webkit-transition: margin-left 0.2s ease-in;
+  transition: margin-left 0.2s ease-in;
+}
+
+.contentAndNavContainerExpand {
+  margin-left: 4vw;
+}
+
+.contentContainer {
+  margin-top: 120px;
+  padding-left: 50px;
+}
+/*# sourceMappingURL=App.module.css.map */
