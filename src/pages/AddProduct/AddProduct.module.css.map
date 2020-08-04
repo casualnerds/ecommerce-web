@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,OAAO,CAAC;EACP,WAAW,EAAE,cAAc;EAC3B,KAAK,ECKW,OAAO;CDJvB",
     "sources": [
-        "AddProduct.module.scss"
+        "AddProduct.module.scss",
+        "../../themes/_colors.scss"
     ],
     "names": [],
     "file": "AddProduct.module.css"
