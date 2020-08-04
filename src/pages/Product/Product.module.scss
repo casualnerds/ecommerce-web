@@ -1,0 +1,92 @@
+@import '../../themes/colors';
+
+
+.productList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    width: 70%;
+    height: 50%;
+    border: 1px solid $silver;
+
+    h3{
+        background-color: $silver;
+        margin: 0;
+        padding: 18px;
+        border-bottom: 1px solid $silver;
+
+    }
+
+    .productFilter{
+        display: flex;
+        padding: 18px;
+        justify-content: center;
+
+        .customSelect{
+            position: relative;
+            // display: block;
+            // max-width: 400px;
+            // min-width: 180px;
+            margin: 0 auto;
+            border: 1px solid $silver;
+            background-color: transparent;
+            z-index: 10;
+
+            select{
+                border: none;
+                outline: none;
+                background: transparent;
+                appearance: none;
+                border-radius: 0;
+                margin: 0;
+                display: block;
+                width: 100%;
+                padding: 10px 53px 13px 13px;
+                // font-size: 15px;
+                color: black;
+            }
+
+            &:after{
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 50px;
+                height: 100%;
+                line-height: 38px;
+                content: '▾';
+                text-align: center;
+                color: black;
+                // font-size: 24px;
+                border-left: 1px solid $silver;
+                z-index: -1;
+            }
+        }
+   
+
+                
+
+        input[type=submit]{
+            width: 15%;
+            background-color: $secondaryColor;
+            color: $white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover {
+            background-color: $primaryColor;
+        }
+    }
+
+    table{
+        padding: 18px;
+        width: 100%;
+        th{
+            border-bottom: 1px solid $silver;
+            border-top: 1px solid $silver;
+            padding: 15px;
+        }
+    }
+
+}

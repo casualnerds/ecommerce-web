@@ -6,7 +6,7 @@ function RestrictedRoute({
     ...rest
 }) {
 
-    const [isLogin] = useState(true);
+    const [isLogin] = useState(false);
 
     return <Route {...rest} render={props => (
         isLogin
