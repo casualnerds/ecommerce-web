@@ -5,13 +5,12 @@ import {
 } from "react-router-dom";
 import { Provider } from 'react-redux';
 
-import { store } from './redux/store';
 import './themes/iconInitiation';
 import "./App.css";
 import { PrivateRoute } from './navigation/PrivateRoute';
 import { RestrictedRoute } from './navigation/RestrictedRoute';
-import { Dashboard } from './pages/Dashboard/Dashboard.page';
-import Signin from "./pages/Signin/Signin.container";
+import { Dashboard, Signin } from './navigation/pageConfig';
+import { store } from './redux/store';
 
 class App extends Component {
 

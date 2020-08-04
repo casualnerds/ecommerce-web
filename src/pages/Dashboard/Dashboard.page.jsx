@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 import styles from './Dasboard.module.css';
 import { Navbar } from '../../modules/Navbar/Navbar.module';
 import { SidebarLeft } from '../../modules/SidebarLeft/SidebarLeft.module';
 import { InnerNavbar } from '../../modules/InnerNavbar/InnerNavbar.module';
+import { MainRoutes } from '../../navigation/MainRoutes/MainRoutes';
 
 class Dashboard extends Component {
     state = {
@@ -24,7 +26,7 @@ class Dashboard extends Component {
                     <div className={`${styles.contentAndNavContainer} ${isSidebarCollapsed ? styles.contentAndNavContainerExpand : null}`}>
                         <InnerNavbar isSidebarCollapsed={isSidebarCollapsed} />
                         <div className={styles.contentContainer}>
-                            <h2>Content</h2>
+                            <MainRoutes {...this.props} />
                         </div>
                     </div>
                 </div>
