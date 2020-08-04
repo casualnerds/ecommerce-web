@@ -4,6 +4,7 @@ import styles from './Dasboard.module.css';
 import { Navbar } from '../../modules/Navbar/Navbar.module';
 import { SidebarLeft } from '../../modules/SidebarLeft/SidebarLeft.module';
 import { InnerNavbar } from '../../modules/InnerNavbar/InnerNavbar.module';
+import { MainRoutes } from '../../navigation/MainRoutes/MainRoutes';
 
 class Dashboard extends Component {
     state = {
@@ -22,9 +23,9 @@ class Dashboard extends Component {
                 <div className={styles.mainContainer}>
                     <SidebarLeft isSidebarCollapsed={isSidebarCollapsed} />
                     <div className={`${styles.contentAndNavContainer} ${isSidebarCollapsed ? styles.contentAndNavContainerExpand : null}`}>
-                        <InnerNavbar isSidebarCollapsed={isSidebarCollapsed} />
+                        <InnerNavbar isSidebarCollapsed={isSidebarCollapsed} {...this.props} />
                         <div className={styles.contentContainer}>
-                            <h2>Content</h2>
+                            <MainRoutes {...this.props} />
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './InnerNavbar.module.css';
 
-function InnerNavbar({ isSidebarCollapsed }) {
+function InnerNavbar({ isSidebarCollapsed, match }) {
     return (
         <div className={`${styles.innerNavbarContainer} ${isSidebarCollapsed ? styles.innerNavbarContainerExpand : null}`}>
             <div className={styles.innerNavbar}>
@@ -11,7 +11,7 @@ function InnerNavbar({ isSidebarCollapsed }) {
                 <Link to="/product">Products</Link>
                 <Link to="/user">Users</Link>
             </div>
-        </div>
+        </div >
     );
 }
 
