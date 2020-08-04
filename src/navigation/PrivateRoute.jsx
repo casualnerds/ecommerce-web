@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 function PrivateRoute({ component: Component, ...rest }) {
 
-    const [isLogin] = useState(false);
+    const [isLogin] = useState(true);
 
     return <Route {...rest} render={props => (
         isLogin
