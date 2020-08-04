@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
 
 import styles from './Dasboard.module.css';
 import { Navbar } from '../../modules/Navbar/Navbar.module';
