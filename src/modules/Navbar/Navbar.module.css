@@ -1,38 +1,30 @@
-.navbar {
-    background-color: darkgray;
-    height: 60px;
-    padding: 10px;
-    display: flex;
-    width: 99%;
-    flex-direction: row;
-    justify-content: space-evenly;
-    position: fixed;
-    z-index: 1;
+.upperNavbarContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+  background-color: #2a302d;
+  -webkit-box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.17);
+  position: fixed;
+  width: 100%;
+  padding: 0 20px;
+  z-index: 1;
 }
 
-.menuButton {
-    color: darkred;
-    padding: 0px 8px;
-    border: 1px black solid;
-    margin: 0 5px;
+.menuIcon {
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
 }
 
-.menuh6 {
-    border: 1px black solid;
-    margin: 0;
+.menuIconExpand {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
-
-.subMenuContainer {
-    border: 1px black solid;
-    display: flex;
-}
-
-.tigaperlima {
-    flex: 1;
-    justify-content: center;
-}
-
-.duaperlima {
-    flex: 1;
-    justify-content: flex-end;
-}
+/*# sourceMappingURL=Navbar.module.css.map */
