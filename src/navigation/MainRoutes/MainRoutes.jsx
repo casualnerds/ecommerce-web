@@ -1,12 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { Home } from '../pageConfig';
+import { Home, Product } from '../pageConfig';
 
 function MainRoutes({ match }) {
     return (
         <Switch>
-            <Route path={match.path} component={Home} />
+            <Route path="/product" component={Product} />
+            <Route path="/" component={Home} />
         </Switch>
     );
 }

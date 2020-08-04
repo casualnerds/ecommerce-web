@@ -19,8 +19,8 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <PrivateRoute exact path="/" component={Dashboard} />
             <RestrictedRoute path="/signin" component={Signin} />
+            <PrivateRoute path="/" component={Dashboard} />
           </Switch>
         </Router>
       </Provider>

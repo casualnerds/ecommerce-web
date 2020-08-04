@@ -23,7 +23,7 @@ class Dashboard extends Component {
                 <div className={styles.mainContainer}>
                     <SidebarLeft isSidebarCollapsed={isSidebarCollapsed} />
                     <div className={`${styles.contentAndNavContainer} ${isSidebarCollapsed ? styles.contentAndNavContainerExpand : null}`}>
-                        <InnerNavbar isSidebarCollapsed={isSidebarCollapsed} />
+                        <InnerNavbar isSidebarCollapsed={isSidebarCollapsed} {...this.props} />
                         <div className={styles.contentContainer}>
                             <MainRoutes {...this.props} />
                         </div>
