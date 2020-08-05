@@ -1,0 +1,135 @@
+.selectable {
+  cursor: pointer;
+  outline: none;
+  height: 35px;
+  width: 20vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #9c9c9c;
+  border-radius: 5px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3));
+  background-image: linear-gradient(#f2f2f2, #e3e3e3);
+  opacity: 1;
+  -webkit-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+  font-family: "Nunito-Light";
+  color: #404040;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  margin-bottom: 20px;
+}
+
+.selectable:hover {
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.selectable:active {
+  opacity: 0.5;
+}
+
+.selectable .selectableRowWrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+}
+
+.selectable .arrowDownIcon {
+  color: #999999;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transition: -webkit-transform 0.2s ease-in;
+  transition: -webkit-transform 0.2s ease-in;
+  transition: transform 0.2s ease-in;
+  transition: transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
+}
+
+.selectable .arrowDownIconExpand {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.optionsContainer {
+  position: absolute;
+  font-family: "Nunito-Light";
+  padding: 10px 20px;
+  max-height: 200px;
+  min-width: 20vw;
+  overflow: auto;
+  background-color: white;
+  -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.17);
+  border-radius: 6px;
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  top: 40px;
+}
+
+.optionsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.optionsContainer::-webkit-scrollbar-track {
+  background-color: #9c9c9c;
+  border-radius: 10px;
+}
+
+.optionsContainer::-webkit-scrollbar-thumb {
+  background-color: #404040;
+  border-radius: 10px;
+}
+
+.optionsContainer .listContainer {
+  list-style: none;
+}
+
+.optionsContainer .listCard {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 0.2px solid #9c9c9c;
+  height: 40px;
+  background-color: white;
+  -webkit-transition: background-color 0.2s ease-in;
+  transition: background-color 0.2s ease-in;
+}
+
+.optionsContainer .listCard:hover {
+  background-color: #e3e3e3;
+}
+
+.optionsContainer .listCard .checkIcon {
+  color: #4CAF50;
+}
+
+.optionsContainer .listCard div {
+  width: 30px;
+}
+
+.optionsContainerExpand {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+/*# sourceMappingURL=InputSelect.module.css.map */
