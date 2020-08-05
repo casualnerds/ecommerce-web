@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from "./AddProduct.module.css";
 import { InputSelect } from '../../modules/InputSelect/InputSelect.module';
@@ -38,6 +37,8 @@ class AddProduct extends Component {
                 choosedOption={choosedCategory}
                 onChooseOption={this.onChooseCategory}
                 placeholder="Choose category .."
+            // width={400} (optional)
+            // height={30} (optional)
             />
         );
     }

@@ -88,6 +88,7 @@
         height: 40px;
         background-color: $white;
         transition: background-color 0.2s ease-in;
+        outline: none;
 
         &:hover {
             background-color: $mercury;

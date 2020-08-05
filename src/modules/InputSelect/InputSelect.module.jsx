@@ -21,7 +21,7 @@ class InputSelect extends Component {
     }
 
     renderSelectInputButton = () => {
-        const { placeholder, choosedOption } = this.props;
+        const { placeholder, choosedOption, width, height } = this.props;
         const { modalOptionShow } = this.state;
 
         return (
@@ -30,6 +30,10 @@ class InputSelect extends Component {
                 onBlur={this.onBlurOptionsInput}
                 tabIndex="0" // nescessary for onFocus and onBlur
                 className={styles.selectable}
+                style={{
+                    width: width ? width : null,
+                    height: height ? height : null
+                }}
             >
                 <div className={styles.selectableRowWrapper}>
                     <p>{choosedOption ? choosedOption : placeholder}</p>
@@ -46,17 +50,21 @@ class InputSelect extends Component {
         const {
             options,
             onChooseOption,
-            choosedOption
+            choosedOption,
+            width
         } = this.props;
         const { modalOptionShow, } = this.state;
 
         return (
             <div
                 className={`${styles.optionsContainer} ${modalOptionShow ? styles.optionsContainerExpand : null}`}
+                style={{
+                    minWidth: width ? width : null
+                }}
             >
                 <ul className={styles.listContainer}>
                     {options.map((option, i) => (
-                        <li key={i} className={styles.listCard} onClick={onChooseOption(option)}>
+                        <li key={i} className={styles.listCard} onFocus={onChooseOption(option)} tabIndex="1">
                             <div>
                                 {
                                     option === choosedOption

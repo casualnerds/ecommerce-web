@@ -114,6 +114,7 @@
   background-color: white;
   -webkit-transition: background-color 0.2s ease-in;
   transition: background-color 0.2s ease-in;
+  outline: none;
 }
 
 .optionsContainer .listCard:hover {
