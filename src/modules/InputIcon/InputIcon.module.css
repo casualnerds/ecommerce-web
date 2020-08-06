@@ -1,0 +1,60 @@
+.inputIconContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.inputIconContainer .iconContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 35px;
+  width: 3vw;
+  border-radius: 5px 0 0 5px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e3e3e3), to(#CCCCCC));
+  background-image: linear-gradient(#e3e3e3, #CCCCCC);
+}
+
+.inputIconContainer p {
+  font-family: "Nunito-Bold";
+  color: #404040;
+}
+
+.inputIconContainer input {
+  height: 35px;
+  width: 17vw;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  border-top: 1px solid #9c9c9c;
+  border-right: 1px solid #9c9c9c;
+  border-bottom: 1px solid #9c9c9c;
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  font-family: "Nunito-Regular";
+  font-size: 15px;
+  color: #404040;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.inputIconContainer input:focus {
+  outline: none;
+  border: 2px solid #4CAF50;
+  -webkit-box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+          box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+/*# sourceMappingURL=InputIcon.module.css.map */

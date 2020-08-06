@@ -1,0 +1,30 @@
+@import '../../themes/colors';
+@import '../../themes/fontType';
+
+.title {
+ font-family: $extraLight;
+ color: $basicFontLight;
+ font-size: 17px;
+ margin-bottom: 20px;
+}
+
+.inputTitle {
+    font-family: $bold;
+    font-size: 20px;
+    color: $basicFontDark;
+    margin-bottom: 5px;
+}
+
+.formContainer {
+    display: flex;
+
+    .formLeftSide {
+        flex: 1;
+        border-right: 1px solid $basicFontLight;
+    };
+
+    .formRightSide {
+        flex: 2;
+        padding-left: 100px;
+    }
+}

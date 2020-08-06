@@ -1,0 +1,46 @@
+@import '../../themes/colors';
+@import '../../themes/fontType';
+
+.inputIconContainer {
+    display: flex;
+    
+    .iconContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 35px;
+        width: 3vw;
+        border-radius: 5px 0 0 5px;
+        background-image: linear-gradient($mercury, $silver);;
+    }
+
+    p {
+        font-family: $bold;
+        color: $basicFontDark;
+    }
+
+    input {
+        height: 35px;
+        width: 17vw;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        border-top: 1px solid $basicFontLight;
+        border-right: 1px solid $basicFontLight;
+        border-bottom: 1px solid $basicFontLight;
+        border-left: none;
+        border-radius: 0 5px 5px 0;
+        font-family: $regular;
+        font-size: 15px;
+        color: $basicFontDark;
+        box-shadow: none;
+        transition: all 0.2s ease-in;
+    
+        &:focus {
+            outline: none;
+            border: 2px solid $secondaryColor;
+            box-shadow: 0 0 10px $secondaryColorTr;
+        }
+    }
+}

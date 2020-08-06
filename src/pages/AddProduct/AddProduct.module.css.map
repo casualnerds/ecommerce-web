@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAGA,AAAA,MAAM,CAAC;EACN,WAAW,EEFC,mBAAmB;EFG/B,KAAK,ECKW,OAAO;EDJvB,SAAS,EAAE,IAAI;EACf,aAAa,EAAE,IAAI;CACnB;;AAED,AAAA,WAAW,CAAC;EACR,WAAW,EEHR,aAAa;EFIhB,SAAS,EAAE,IAAI;EACf,KAAK,ECJO,OAAO;EDKnB,aAAa,EAAE,GAAG;CACrB;;AAED,AAAA,cAAc,CAAC;EACX,OAAO,EAAE,IAAI;CAWhB;;AAZD,AAGI,cAHU,CAGV,aAAa,CAAC;EACV,IAAI,EAAE,CAAC;EACP,YAAY,EAAE,GAAG,CAAC,KAAK,CCZd,OAAO;CDanB;;AANL,AAQI,cARU,CAQV,cAAc,CAAC;EACX,IAAI,EAAE,CAAC;EACP,YAAY,EAAE,KAAK;CACtB",
     "sources": [
-        "AddProduct.module.scss"
+        "AddProduct.module.scss",
+        "../../themes/_colors.scss",
+        "../../themes/_fontType.scss"
     ],
     "names": [],
     "file": "AddProduct.module.css"

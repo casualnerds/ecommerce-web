@@ -10,8 +10,11 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "draft-js": "^0.11.6",
+    "draft-js-export-html": "^1.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-draft-wysiwyg": "^1.14.5",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
@@ -27,6 +30,7 @@
   "eslintConfig": {
     "extends": "react-app",
     "rules": {
+      "no-console": "warn",
       "semi": [
         "error",
         "always"
@@ -43,7 +47,7 @@
         {
           "ObjectPattern": {
             "multiline": true,
-            "minProperties": 3
+            "minProperties": 5
           },
           "ImportDeclaration": {
             "multiline": true,
