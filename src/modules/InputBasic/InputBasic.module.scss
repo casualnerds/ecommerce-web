@@ -1,0 +1,24 @@
+@import '../../themes/colors';
+@import '../../themes/fontType';
+
+input[type=text] {
+    height: 35px;
+    width: 20vw;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border: 1px solid $basicFontLight;
+    border-radius: 5px;
+    font-family: $regular;
+    font-size: 15px;
+    color: $basicFontDark;
+    box-shadow: none;
+    transition: all 0.2s ease-in;
+
+    &:focus {
+        outline: none;
+        border: 2px solid $secondaryColor;
+        box-shadow: 0 0 10px $secondaryColorTr;
+    }
+}

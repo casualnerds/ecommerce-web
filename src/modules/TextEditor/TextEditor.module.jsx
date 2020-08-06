@@ -32,12 +32,13 @@ class TextEditor extends Component {
     }
 
     render() {
-        const { editorState, onEditorStateChange } = this.props;
+        const { editorState, onEditorStateChange, readOnly } = this.props;
         const { isEditorOnFocus, toolbarOptions } = this.state;
 
         return (
             <>
                 <Editor
+                    readOnly={readOnly}
                     editorState={editorState}
                     onEditorStateChange={onEditorStateChange}
                     wrapperClassName={styles.editorWrapper}
