@@ -183,18 +183,6 @@
   margin-bottom: 10px;
 }
 
-.uploadImageContainer .imagesContainer .mainImage .inputFile {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-}
-
 .uploadImageContainer .imagesContainer .mainImage .deleteMainImageIconContainer {
   position: absolute;
   top: -15px;
@@ -250,6 +238,28 @@
   border-radius: 7px;
   width: 5vw;
   height: 5vw;
+  position: relative;
+}
+
+.uploadImageContainer .imagesContainer .smallImagesContainer .smallImage .deleteSmallImageIconContainer {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  cursor: pointer;
+  background-color: white;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.17);
+  border-radius: 20px;
+  padding: 1px;
+}
+
+.uploadImageContainer .imagesContainer .smallImagesContainer .smallImage .deleteSmallImageIconContainer .deleteSmallImageIcon {
+  color: #eb7a7a;
+  font-size: 20px;
+}
+
+.uploadImageContainer .imagesContainer .smallImagesContainer .smallImagePointer {
+  cursor: pointer;
 }
 
 .uploadImageContainer .imagesContainer .smallImagesContainer .smallImageIcon {
@@ -280,14 +290,15 @@
   border-radius: 10px;
   width: 100%;
   padding: 1vw 0;
-  -webkit-transition: padding 0.2s ease-in;
-  transition: padding 0.2s ease-in;
+  background-color: white;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
-.uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBox .uploadIcon {
+.uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBox .uploadDragIcon {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #FFE1C7;
+  color: #CCCCCC;
 }
 
 .uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBox p {
@@ -297,5 +308,19 @@
 
 .uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBoxExpand {
   padding: 4vw 0;
+  background-color: rgba(165, 205, 214, 0.3);
+}
+
+.uploadImageContainer .imagesContainer .inputFile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  text-indent: -999em;
+  cursor: pointer;
 }
 /*# sourceMappingURL=AddProduct.module.css.map */

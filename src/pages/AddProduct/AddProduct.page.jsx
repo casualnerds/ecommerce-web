@@ -12,7 +12,10 @@ import { TextEditor } from '../../modules/TextEditor/TextEditor.module';
 class AddProduct extends Component {
     constructor(props) {
         super(props);
-        this.inputMainFileRef = createRef();
+        this.image0 = createRef();
+        this.image1 = createRef();
+        this.image2 = createRef();
+        this.image3 = createRef();
         this.state = {
             categories: [
                 'Sneaker',
@@ -31,8 +34,7 @@ class AddProduct extends Component {
             editorState: EditorState.createEmpty(),
             uploadedImages: [],
             uploadError: '',
-            dropDepth: 0,
-            inDropZone: false
+            dropDepth: 0
         };
     }
 
@@ -62,14 +64,13 @@ class AddProduct extends Component {
 
     onChangeFile = (e, i) => {
         const { uploadedImages } = this.state;
-        const file = e.target.files[0];
+        const file = e.target.files[0]; // pick the image file
         this.setState({ uploadError: '' });
 
         if (file) {
-            const newArrayImages = [
-                ...uploadedImages,
-                URL.createObjectURL(e.target.files[0])
-            ];
+            const newArrayImages = uploadedImages;
+            newArrayImages[i] = URL.createObjectURL(file);
+
             if (file.type.split("/")[0] === "image") {
                 this.setState({
                     uploadedImages: newArrayImages
@@ -83,17 +84,22 @@ class AddProduct extends Component {
     }
 
     onDragEnterFiles = e => {
+        const { dropDepth } = this.state;
         e.preventDefault();
         e.stopPropagation();
-        console.log('enter');
-        this.setState({ isDragOver: true });
+
+        this.setState({
+            dropDepth: dropDepth + 1
+        });
     }
 
     onDragLeaveFiles = e => {
+        const { dropDepth } = this.state;
         e.preventDefault();
         e.stopPropagation();
-        console.log('leave');
-        this.setState({ isDragOver: false });
+        this.setState({
+            dropDepth: dropDepth - 1
+        });
     }
 
     onDragOverFiles = e => {
@@ -105,12 +111,31 @@ class AddProduct extends Component {
     onDropFiles = e => {
         e.preventDefault();
         e.stopPropagation();
-        console.log(e.dataTransfer.files);
+        const { uploadedImages } = this.state;
+        const newArray = [...uploadedImages];
+
+        this.setState({ dropDepth: 0 });
+        const filesObject = e.dataTransfer.files;
+        const filesArray = Object.keys(filesObject);
+        filesArray.forEach(key => {
+            if (newArray.length < 4) {
+                newArray.push(URL.createObjectURL(filesObject[key]));
+            }
+        });
+        this.setState({
+            uploadedImages: newArray
+        });
     }
 
-    deleteMainImage = () => {
-        this.setState({ uploadedImages: [] }, () => {
-            this.inputMainFileRef.current.value = "";
+    deleteImage = i => () => {
+        const { uploadedImages } = this.state;
+        const newArray = [...uploadedImages];
+        newArray.splice(i, 1);
+
+        this.setState({ uploadedImages: newArray }, () => {
+            for (let x = 0; x <= newArray.length; x++) { // delete all choosen file on input
+                this[`image${x}`].current.value = "";
+            }
         });
     }
 
@@ -230,15 +255,15 @@ class AddProduct extends Component {
                     <p className={styles.addImageTextMain}>Add new image</p>
                 </div>
                 <input
-                    ref={this.inputMainFileRef}
+                    ref={this.image0}
                     type="file"
                     className={styles.inputFile}
-                    onChange={e => this.onChangeFile(e, 0)}
+                    onChange={event => this.onChangeFile(event, 0)}
                     accept="image/*"
                 />
                 {
                     uploadedImages[0] ? (
-                        <div className={styles.deleteMainImageIconContainer} onClick={this.deleteMainImage}>
+                        <div className={styles.deleteMainImageIconContainer} onClick={this.deleteImage(0)}>
                             <FontAwesomeIcon icon="times-circle" className={styles.deleteMainImageIcon} />
                         </div>
                     ) : null
@@ -248,13 +273,42 @@ class AddProduct extends Component {
     }
 
     renderOtherImages = () => {
-        const { smallImages } = this.state;
+        const { smallImages, uploadedImages } = this.state;
         return (
             <div className={styles.smallImagesContainer}>
                 {
                     smallImages.map((image, i) => (
-                        <div key={i} className={styles.smallImage}>
-                            <FontAwesomeIcon icon="plus" className={styles.smallImageIcon} />
+                        <div
+                            key={i}
+                            className={styles.smallImage}
+                            style={{
+                                backgroundImage: uploadedImages[i + 1] ? `url(${uploadedImages[i + 1]})` : null,
+                                backgroundSize: "contain",
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "center"
+                            }}
+                        >
+                            {
+                                uploadedImages[i] ? ( // render if previous index image is exist
+                                    <input
+                                        ref={this[`image${i + 1}`]}
+                                        type="file"
+                                        className={styles.inputFile}
+                                        onChange={event => this.onChangeFile(event, i + 1)}
+                                        accept="image/*"
+                                    />
+                                ) : null
+                            }
+
+                            {
+                                uploadedImages[i + 1] ? (
+                                    <div className={styles.deleteSmallImageIconContainer} onClick={this.deleteImage(i + 1)}>
+                                        <FontAwesomeIcon icon="times-circle" className={styles.deleteSmallImageIcon} />
+                                    </div>
+                                ) : (
+                                        <FontAwesomeIcon icon="plus" className={styles.smallImageIcon} />
+                                    )
+                            }
                         </div>
                     ))
                 }
@@ -263,7 +317,7 @@ class AddProduct extends Component {
     }
 
     renderDndArea = () => {
-        const { isDragOver } = this.state;
+        const { dropDepth } = this.state;
         return (
             <div
                 className={styles.dndAreaContainer}
@@ -272,10 +326,10 @@ class AddProduct extends Component {
                 onDragOver={this.onDragOverFiles}
                 onDrop={this.onDropFiles}
             >
-                <div className={`${styles.dndMessageBox} ${isDragOver ? styles.dndMessageBoxExpand : null}`}>
-                    <FontAwesomeIcon icon="upload" className={styles.uploadIcon} />
-                    <p>or Drag n Drop </p>
-                    <p>your file or multiple images here</p>
+                <div className={`${styles.dndMessageBox} ${dropDepth > 0 ? styles.dndMessageBoxExpand : null}`}>
+                    <FontAwesomeIcon icon="upload" className={styles.uploadDragIcon} />
+                    <p>or Drop</p>
+                    <p>your multiple images here</p>
                 </div>
             </div>
         );

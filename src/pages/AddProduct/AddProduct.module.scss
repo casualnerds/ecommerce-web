@@ -138,18 +138,6 @@
                 margin-bottom: 10px;
             }
 
-            .inputFile {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                cursor: pointer;
-            }
-
             .deleteMainImageIconContainer {
                 position: absolute;
                 top: -15px;
@@ -190,6 +178,27 @@
                 border-radius: 7px;
                 width: 5vw;
                 height: 5vw;
+                position: relative;
+
+                .deleteSmallImageIconContainer {
+                    position: absolute;
+                    top: -12px;
+                    right: -12px;
+                    cursor: pointer;
+                    background-color: $white;
+                    box-shadow: 0 0 3px $boxShadow;
+                    border-radius: 20px;
+                    padding: 1px;
+    
+                    .deleteSmallImageIcon {
+                        color: $apricot;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .smallImagePointer {
+                cursor: pointer;   
             }
 
             .smallImageIcon {
@@ -211,12 +220,13 @@
                 border-radius: 10px;
                 width: 100%;
                 padding: 1vw 0;
-                transition: padding 0.2s ease-in;
+                background-color: $white;
+                transition: all 0.2s ease-in;
 
-                .uploadIcon {
+                .uploadDragIcon {
                     font-size: 20px;
                     margin-bottom: 10px;
-                    color: $scheme5;
+                    color: $silver;
                 }
 
                 p {
@@ -227,7 +237,21 @@
 
             .dndMessageBoxExpand {
                 padding: 4vw 0;
+                background-color: $scheme2Tr;
             }
+        }
+
+        .inputFile {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            text-indent: -999em;
+            cursor: pointer;
         }
     }
 }
