@@ -68,14 +68,14 @@
 
         input[type=submit]{
             width: 15%;
-            background-color: $secondaryColor;
+            background-color: $scheme2;
             color: $white;
             border: none;
             cursor: pointer;
         }
 
         input[type=submit]:hover {
-            background-color: $primaryColor;
+            background-color: $scheme1;
         }
     }
 

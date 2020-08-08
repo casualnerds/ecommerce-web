@@ -8,13 +8,13 @@
     width: 20vw;
     display: flex;
     align-items: center;
-    border: 1px solid $basicFontLight;
+    border: 1px solid $silver;
     border-radius: 5px;
     background-image: linear-gradient($concrete, $mercury);
     opacity: 1;
     transition: opacity 0.2s ease-in;
     font-family: $light;
-    color: $basicFontDark;
+    color: $scheme4;
     user-select: none;
     margin-bottom: 20px;
 
@@ -33,6 +33,11 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 20px;
+
+        p {
+            font-family: $regular;
+            color: $dustyGray;
+        }
     }
 
     .arrowDownIcon {
@@ -66,12 +71,12 @@
       }
        
     &::-webkit-scrollbar-track {
-        background-color: $basicFontLight;
+        background-color: $scheme5;
         border-radius: 10px;
       }
        
     &::-webkit-scrollbar-thumb {
-        background-color: $basicFontDark;
+        background-color: $scheme4;
         border-radius: 10px;
 
       }
@@ -84,7 +89,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        border-bottom: 0.2px solid $basicFontLight;
+        border-bottom: 0.2px solid $silver;
         height: 40px;
         background-color: $white;
         transition: background-color 0.2s ease-in;
@@ -94,8 +99,13 @@
             background-color: $mercury;
         }
 
+        p {
+            font-family: $regular;
+            color: $dustyGray;
+        }
+
         .checkIcon {
-            color: $secondaryColor;
+            color: $scheme2;
         }
 
         div {

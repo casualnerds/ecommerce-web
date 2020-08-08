@@ -72,14 +72,14 @@
 
 .productList .productFilter input[type=submit] {
   width: 15%;
-  background-color: #4CAF50;
+  background-color: #A5CDD6;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .productList .productFilter input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #568D99;
 }
 
 .productList table {

@@ -3,25 +3,30 @@
 
 .title {
  font-family: $extraLight;
- color: $basicFontLight;
+ color: $silver;
  font-size: 17px;
  margin-bottom: 20px;
 }
 
 .inputTitle {
-    font-family: $semiBold;
-    font-size: 20px;
-    color: $basicFontDark;
+    font-family: $extraLight;
+    font-size: 1em;
+    color: $scheme1;
     margin-bottom: 5px;
 }
 
 .formContainer {
     display: flex;
-    border-bottom: 1px dashed $basicFontLight;
+    border-bottom: 1px dashed $scheme5;
 
     .formLeftSide {
         flex: 1;
-        border-right: 1px dashed $basicFontLight;
+        border-right: 1px dashed $scheme5;
+
+        .priceIcon {
+            font-family: $bold;
+            color: $dustyGray;
+        }
     };
 
     .formRightSide {
@@ -46,13 +51,13 @@
     }
 
     .checkIconChecked {
-        color: $secondaryColor;
+        color: $scheme2;
     }
 
     .discountText {
-        font-family: $semiBold;
+        font-family: $extraLight;
         font-size: 17px;
-        color: $basicFontDark;
+        color: $scheme1;
         user-select: none;
     }
 }
@@ -70,8 +75,8 @@
     }
 
     .percentageIcon {
-        font-size: 20px;
-        color: $basicFontDark;
+        font-size: 15px;
+        color: $dustyGray;
     }
 }
 
@@ -102,13 +107,13 @@
             align-items: center;
             width: 16vw;
             height: 16vw;
-            border: 2px dashed $basicFontLight;
+            border: 2px dashed $silver;
             stroke-dasharray: 20px;
             border-radius: 10px;
             position: relative;
     
             &:hover {
-                border: 2px dashed $secondaryColor;
+                border: 2px dashed $scheme2;
             }
     
             .addImageTextContainer {
@@ -116,20 +121,21 @@
                 align-items: center;
     
                 .plusIconMain {
-                    color: $secondaryColor;
+                    color: $scheme2;
                     font-size: 25px;
                     margin-right: 10px;
                 }
         
                 .addImageTextMain {
                     font-family: $regular;
-                    color: $secondaryColor;
+                    color: $scheme2;
                 }
             }
     
             .uploadMainIcon {
                 font-size: 5em;
-                color: $basicFontLight;
+                color: $silver;
+                margin-bottom: 10px;
             }
 
             .inputFile {
@@ -155,17 +161,17 @@
                 padding: 3px;
 
                 .deleteMainImageIcon {
-                    color: $burntSienna;
+                    color: $apricot;
                     font-size: 30px;
                 }
             }
         }
     
         .mainImageExist {
-            border: 2px solid $secondaryColor;
+            border: 2px solid $scheme2;
 
             &:hover {
-                border: 2px solid $secondaryColor;
+                border: 2px solid $scheme2;
             }
         }
     
@@ -180,14 +186,14 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 1px dashed $basicFontLight;
+                border: 2px dashed $silver;
                 border-radius: 7px;
                 width: 5vw;
                 height: 5vw;
             }
 
             .smallImageIcon {
-                color: $basicFontLight;
+                color: $scheme2;
                 font-size: 20px;
             }
         }
@@ -201,7 +207,7 @@
 
             .dndMessageBox {
                 text-align: center;
-                border: 1px dashed $secondaryColor;
+                border: 1px dashed $scheme2;
                 border-radius: 10px;
                 width: 100%;
                 padding: 1vw 0;
@@ -210,12 +216,12 @@
                 .uploadIcon {
                     font-size: 20px;
                     margin-bottom: 10px;
-                    color: $basicFontLight;
+                    color: $scheme5;
                 }
 
                 p {
                     font-family: $regular;
-                    color: $secondaryColor;
+                    color: $scheme2;
                 }
             }
 

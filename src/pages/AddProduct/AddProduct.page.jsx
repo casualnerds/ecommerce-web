@@ -60,10 +60,11 @@ class AddProduct extends Component {
         this.setState({ editorState });
     }
 
-    onChangeFile = (e) => {
+    onChangeFile = (e, i) => {
         const { uploadedImages } = this.state;
         const file = e.target.files[0];
         this.setState({ uploadError: '' });
+
         if (file) {
             const newArrayImages = [
                 ...uploadedImages,
@@ -149,7 +150,7 @@ class AddProduct extends Component {
             // width={400} // (optional)
             // height={30} // (optional)
             >
-                <p>Rp</p>
+                <p className={styles.priceIcon}>Rp</p>
             </InputIcon>
         );
     }
@@ -180,7 +181,7 @@ class AddProduct extends Component {
                     isDiscount ? (
                         <div className={styles.discountInputContainer}>
                             <InputIcon width="5vw" type="number">
-                                <FontAwesomeIcon icon="percentage" className={styles.percentageIcon} />
+                                <FontAwesomeIcon icon="percent" className={styles.percentageIcon} />
                             </InputIcon>
                         </div>
                     ) : null
@@ -217,7 +218,7 @@ class AddProduct extends Component {
                 }}
             >
                 <FontAwesomeIcon
-                    icon="image"
+                    icon="images"
                     className={styles.uploadMainIcon}
                     style={{ opacity: uploadedImages[0] ? 0 : 1 }}
                 />
@@ -232,7 +233,7 @@ class AddProduct extends Component {
                     ref={this.inputMainFileRef}
                     type="file"
                     className={styles.inputFile}
-                    onChange={this.onChangeFile}
+                    onChange={e => this.onChangeFile(e, 0)}
                     accept="image/*"
                 />
                 {

@@ -4,10 +4,11 @@
 
 .toolbar {
   border-radius: 7px;
+  border: 1px solid #CCCCCC;
 }
 
 .editor {
-  border: 1px solid #9c9c9c;
+  border: 1px solid #CCCCCC;
   border-radius: 7px;
   height: 200px;
   padding: 0 10px;
@@ -23,18 +24,18 @@
 }
 
 .editor::-webkit-scrollbar-track {
-  background-color: #9c9c9c;
+  background-color: #FFE1C7;
   border-radius: 10px;
 }
 
 .editor::-webkit-scrollbar-thumb {
-  background-color: #404040;
+  background-color: #D9B493;
   border-radius: 10px;
 }
 
 .editorFocus {
-  border: 2px solid #4CAF50;
-  -webkit-box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
-          box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+  border: 2px solid #A5CDD6;
+  -webkit-box-shadow: 0 0 10px rgba(165, 205, 214, 0.3);
+          box-shadow: 0 0 10px rgba(165, 205, 214, 0.3);
 }
 /*# sourceMappingURL=TextEditor.module.css.map */

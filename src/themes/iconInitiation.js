@@ -4,11 +4,12 @@ import {
     faChevronCircleDown,
     faCheck,
     faCheckSquare,
-    faPercentage,
+    faPercent,
     faImage,
     faPlus,
     faTimesCircle,
-    faUpload
+    faUpload,
+    faImages
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -18,9 +19,10 @@ library.add(
     faChevronCircleDown,
     faCheck,
     faCheckSquare,
-    faPercentage,
+    faPercent,
     faImage,
     faPlus,
     faTimesCircle,
-    faUpload
+    faUpload,
+    faImages
 );
