@@ -9,7 +9,8 @@ import {
     faPlus,
     faTimesCircle,
     faUpload,
-    faImages
+    faImages,
+    faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -24,5 +25,6 @@ library.add(
     faPlus,
     faTimesCircle,
     faUpload,
-    faImages
+    faImages,
+    faInfoCircle
 );

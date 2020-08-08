@@ -2,12 +2,14 @@ import React, { Component, createRef } from "react";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState } from 'draft-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Lottie from 'react-lottie';
 
 import styles from "./AddProduct.module.css";
 import { InputSelect } from '../../modules/InputSelect/InputSelect.module';
 import { InputBasic } from '../../modules/InputBasic/InputBasic.module';
 import { InputIcon } from '../../modules/InputIcon/InputIcon.module';
 import { TextEditor } from '../../modules/TextEditor/TextEditor.module';
+import { checkAnimation } from '../../themes/lottieAnimations';
 
 class AddProduct extends Component {
     constructor(props) {
@@ -114,12 +116,19 @@ class AddProduct extends Component {
         const { uploadedImages } = this.state;
         const newArray = [...uploadedImages];
 
-        this.setState({ dropDepth: 0 });
+        this.setState({ dropDepth: 0, uploadError: '' });
         const filesObject = e.dataTransfer.files;
         const filesArray = Object.keys(filesObject);
         filesArray.forEach(key => {
-            if (newArray.length < 4) {
-                newArray.push(URL.createObjectURL(filesObject[key]));
+            const isImageFormat = filesObject[key].type.split("/")[0] === "image";
+            if ((newArray.length < 4)) {
+                if (isImageFormat) {
+                    newArray.push(URL.createObjectURL(filesObject[key]));
+                } else {
+                    this.setState({
+                        uploadError: 'Only allow image file type.'
+                    });
+                }
             }
         });
         this.setState({
@@ -221,10 +230,24 @@ class AddProduct extends Component {
             <div className={styles.uploadImageContainer}>
                 <h2 className={styles.inputTitle}>Upload Images</h2>
                 <p className={styles.uploadError}>{uploadError}</p>
-                <div className={styles.imagesContainer}>
-                    {this.renderMainImage()}
-                    {this.renderOtherImages()}
-                    {this.renderDndArea()}
+                <div className={styles.uploadAndDescWrapper}>
+                    <div className={styles.imagesContainer}>
+                        {this.renderMainImage()}
+                        {this.renderOtherImages()}
+                        {this.renderDndArea()}
+                    </div>
+                    <div className={styles.tipsContainer}>
+                        <div>
+                            <FontAwesomeIcon icon="info-circle" className={styles.infoIcon} />
+                        </div>
+                        <div>
+                            <h5 className={styles.tipsTitle}>Images Recommendation:</h5>
+                            <p><span>1.</span> hehhhee</p>
+                            <p><span>2.</span> hehhhee</p>
+                            <p><span>3.</span> hehhhee</p>
+                            <p><span>4.</span> hehhhee</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -277,10 +300,10 @@ class AddProduct extends Component {
         return (
             <div className={styles.smallImagesContainer}>
                 {
-                    smallImages.map((image, i) => (
+                    smallImages.map((_, i) => (
                         <div
                             key={i}
-                            className={styles.smallImage}
+                            className={`${styles.smallImage} ${uploadedImages[i + 1] ? styles.smallImageExist : null}`}
                             style={{
                                 backgroundImage: uploadedImages[i + 1] ? `url(${uploadedImages[i + 1]})` : null,
                                 backgroundSize: "contain",
@@ -317,42 +340,76 @@ class AddProduct extends Component {
     }
 
     renderDndArea = () => {
-        const { dropDepth } = this.state;
+        const { dropDepth, uploadedImages } = this.state;
         return (
-            <div
-                className={styles.dndAreaContainer}
-                onDragEnter={this.onDragEnterFiles}
-                onDragLeave={this.onDragLeaveFiles}
-                onDragOver={this.onDragOverFiles}
-                onDrop={this.onDropFiles}
-            >
-                <div className={`${styles.dndMessageBox} ${dropDepth > 0 ? styles.dndMessageBoxExpand : null}`}>
-                    <FontAwesomeIcon icon="upload" className={styles.uploadDragIcon} />
-                    <p>or Drop</p>
-                    <p>your multiple images here</p>
-                </div>
+            <>
+                {
+                    uploadedImages.length === 4 ? (
+                        this.renderCheckAnimation()
+                    ) : (
+                            <div
+                                className={styles.dndAreaContainer}
+                                onDragEnter={this.onDragEnterFiles}
+                                onDragLeave={this.onDragLeaveFiles}
+                                onDragOver={this.onDragOverFiles}
+                                onDrop={this.onDropFiles}
+                            >
+                                <div className={`${styles.dndMessageBox} ${dropDepth > 0 ? styles.dndMessageBoxExpand : null}`}>
+                                    <FontAwesomeIcon icon="upload" className={styles.uploadDragIcon} />
+                                    <p>or Drop</p>
+                                    <p>your multiple images here</p>
+                                </div>
+                            </div>
+                        )
+                }
+            </>
+        );
+    }
+
+    renderCheckAnimation = () => {
+        const options = {
+            loop: false,
+            autoplay: true,
+            animationData: checkAnimation,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+
+        return (
+            <div className={styles.checkAnimationContainer}>
+                <Lottie
+                    options={options}
+                    height={'4vw'}
+                    width={'4vw'}
+                />
+                <p className={styles.completeUpload}>Yeay! your product images are complete.</p>
             </div>
         );
     }
 
-    // TODO ONLY UPLOAD IMAGES
     render() {
         return (
             <div>
                 <h3 className={styles.title}>Add New Product</h3>
+                <h2 className={styles.inputTitle}>Product Information</h2>
                 <div className={styles.formContainer}>
                     <div className={styles.formLeftSide}>
-                        <h2 className={styles.inputTitle}>Product's Name</h2>
-                        {this.renderProductNameInput()}
-                        <h2 className={styles.inputTitle}>Category</h2>
-                        {this.renderInputSelect()}
-                        <h2 className={styles.inputTitle}>Price</h2>
-                        {this.renderPriceInput()}
-                        {this.renderDiscountOption()}
+                        <div className={styles.leftSideCard}>
+                            <h2 className={styles.inputTitle}>Name</h2>
+                            {this.renderProductNameInput()}
+                            <h2 className={styles.inputTitle}>Category</h2>
+                            {this.renderInputSelect()}
+                            <h2 className={styles.inputTitle}>Price</h2>
+                            {this.renderPriceInput()}
+                            {this.renderDiscountOption()}
+                        </div>
                     </div>
                     <div className={styles.formRightSide}>
-                        <h2 className={styles.inputTitle}>Description</h2>
-                        {this.renderTextEditor()}
+                        <div className={styles.rightSideCard}>
+                            <h2 className={styles.inputTitle}>Description</h2>
+                            {this.renderTextEditor()}
+                        </div>
                     </div>
                 </div>
                 {this.renderUploadImages()}
