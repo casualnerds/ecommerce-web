@@ -1,0 +1,40 @@
+.bodyContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.mainContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 60px;
+}
+
+.contentAndNavContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 15vw;
+  width: 100%;
+  -webkit-transition: margin-left 0.2s ease-in;
+  transition: margin-left 0.2s ease-in;
+}
+
+.contentAndNavContainerExpand {
+  margin-left: 4vw;
+}
+
+.contentContainer {
+  margin-top: 140px;
+  padding-left: 50px;
+}
+/*# sourceMappingURL=Dasboard.module.css.map */

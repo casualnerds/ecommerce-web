@@ -1,0 +1,29 @@
+.inputBasic {
+  height: 35px;
+  width: 20vw;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  font-family: "Nunito-SemiBold";
+  font-size: 15px;
+  color: #999999;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.inputBasic:focus {
+  outline: none;
+  border: 2px solid #A5CDD6;
+  -webkit-box-shadow: 0 0 10px rgba(165, 205, 214, 0.3);
+          box-shadow: 0 0 10px rgba(165, 205, 214, 0.3);
+}
+/*# sourceMappingURL=InputBasic.module.css.map */

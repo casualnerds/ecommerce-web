@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,iBAAiB,CAAC;EACd,QAAQ,EAAE,KAAK;EACf,gBAAgB,ECHX,OAAO;EDIZ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,KAAK;EACb,UAAU,EAAE,kBAAkB;CACjC;;AAED,AAAA,yBAAyB,CAAC;EACtB,KAAK,EAAE,GAAG;CACb",
+    "sources": [
+        "SidebarLeft.module.scss",
+        "../../themes/_colors.scss"
+    ],
+    "names": [],
+    "file": "SidebarLeft.module.css"
+}

@@ -1,0 +1,13 @@
+.sideBarContainer {
+  position: fixed;
+  background-color: #A5CDD6;
+  width: 15vw;
+  height: 100vh;
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+}
+
+.sideBarContainerCollapse {
+  width: 4vw;
+}
+/*# sourceMappingURL=SidebarLeft.module.css.map */

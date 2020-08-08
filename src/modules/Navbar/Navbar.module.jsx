@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './Navbar.module.css';
 
-function Navbar() {
-    return (
-        <div className={styles.navbar}>
-            <div className={`${styles.subMenuContainer} ${styles.tigaperlima}`}>
-                <a className={styles.menuButton}>Home</a>
-                <a className={styles.menuButton}>Product</a>
+class Navbar extends Component {
+    render() {
+        const { onClickMenuSidebar, isSidebarCollapsed } = this.props;
+
+        return (
+            <div className={styles.upperNavbarContainer}>
+                <FontAwesomeIcon
+                    icon="bars"
+                    color="white"
+                    size="2x"
+                    onClick={onClickMenuSidebar} className={`${styles.menuIcon} ${isSidebarCollapsed ? styles.menuIconExpand : null}`}
+                />
             </div>
-            <div className={`${styles.subMenuContainer} ${styles.duaperlima}`}>
-                <a className={styles.menuButton}>Home</a>
-                <a className={styles.menuButton}>Product</a>
-            </div>
-        </div>
-    )
+        );
+    }
 }
 
 export { Navbar };

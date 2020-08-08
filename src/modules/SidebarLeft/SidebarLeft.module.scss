@@ -1,0 +1,13 @@
+@import '../../themes/colors';
+
+.sideBarContainer {
+    position: fixed;
+    background-color: $scheme2;
+    width: 15vw;
+    height: 100vh;
+    transition: width 0.2s ease-in;
+}
+
+.sideBarContainerCollapse {
+    width: 4vw;
+}

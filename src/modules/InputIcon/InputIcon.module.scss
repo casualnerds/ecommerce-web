@@ -1,0 +1,57 @@
+@import '../../themes/colors';
+@import '../../themes/fontType';
+
+.inputIconContainer {
+    display: flex;
+    
+    .iconContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 35px;
+        width: 3vw;
+        border-radius: 5px 0 0 5px;
+        background-image: linear-gradient($concrete, $mercury);;
+        border-top: 1px solid $silver;
+        border-left: 1px solid $silver;
+        border-bottom: 1px solid $silver;
+    }
+
+    p {
+        font-family: $bold;
+        color: $scheme4;
+    }
+
+    input {
+        height: 35px;
+        width: 17vw;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        border-top: 1px solid $silver;
+        border-right: 1px solid $silver;
+        border-bottom: 1px solid $silver;
+        border-left: none;
+        border-radius: 0 5px 5px 0;
+        font-family: $semiBold;
+        font-size: 15px;
+        color: $dustyGray;
+        box-shadow: none;
+        transition: all 0.2s ease-in;
+        appearance: none;
+    
+        &:focus {
+            outline: none;
+            border: 2px solid $scheme2;
+            box-shadow: 0 0 10px $scheme2Tr;
+        }
+
+        &::-webkit-outer-spin-button {
+            appearance: none;
+        }
+        &::-webkit-inner-spin-button {
+            appearance: none;
+        }
+    }
+}
