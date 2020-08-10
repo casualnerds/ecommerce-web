@@ -5,6 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Lottie from 'react-lottie';
 
 import styles from "./AddProduct.module.css";
+import {
+    nominalSeparator,
+    isNumber,
+    removeSeparator,
+    removeZeroOnFront,
+    calculateDiscount
+} from '../../helpers/helpers';
 import { InputSelect } from '../../modules/InputSelect/InputSelect.module';
 import { InputBasic } from '../../modules/InputBasic/InputBasic.module';
 import { InputIcon } from '../../modules/InputIcon/InputIcon.module';
@@ -31,6 +38,9 @@ class AddProduct extends Component {
             productName: '',
             choosedCategory: '',
             price: 0,
+            formattedPrice: '0',
+            discount: 0,
+            netPrice: 0,
             isDiscount: false,
             smallImages: [1, 2, 3],
             editorState: EditorState.createEmpty(),
@@ -52,8 +62,37 @@ class AddProduct extends Component {
         this.setState({ productName });
     }
 
-    onChangePriceInput = (price) => {
-        this.setState({ price });
+    onChangePriceInput = (e) => {
+        const { discount } = this.state;
+        const value = e.target.value;
+        if (isNumber(value)) {
+            const removeZero = removeZeroOnFront(value);
+            const separated = nominalSeparator(removeZero);
+            this.setState({
+                price: removeZero ? parseInt(removeSeparator(removeZero)) : 0,
+                formattedPrice: removeZero ? separated : '0',
+                netPrice: value ? calculateDiscount(parseInt(removeSeparator(removeZero)), discount) : 0
+            });
+        }
+    }
+
+    onChangeDiscount = e => {
+        const { price } = this.state;
+        const value = e.target.value;
+
+        if (isNumber(value)) {
+            if (value <= 100) {
+                this.setState({
+                    discount: value ? parseInt(value) : 0,
+                    netPrice: value ? calculateDiscount(price, value) : price
+                });
+            } else {
+                this.setState({
+                    discount: value ? 100 : 0,
+                    netPrice: value ? calculateDiscount(price, 100) : price
+                });
+            }
+        }
     }
 
     onClickDiscount = () => {
@@ -206,14 +245,12 @@ class AddProduct extends Component {
     }
 
     renderPriceInput = () => {
-        const { price } = this.state;
+        const { formattedPrice } = this.state;
         return (
             <InputIcon
-                type="number"
+                type="text"
                 onChange={this.onChangePriceInput}
-                value={price}
-            // width={400} // (optional)
-            // height={30} // (optional)
+                value={formattedPrice}
             >
                 <p className={styles.priceIcon}>Rp</p>
             </InputIcon>
@@ -231,7 +268,7 @@ class AddProduct extends Component {
     }
 
     renderDiscountOption = () => {
-        const { isDiscount } = this.state;
+        const { isDiscount, discount, netPrice } = this.state;
         return (
             <div>
                 <div className={styles.checkDiscountWrapper}>
@@ -245,9 +282,10 @@ class AddProduct extends Component {
                 {
                     isDiscount ? (
                         <div className={styles.discountInputContainer}>
-                            <InputIcon width="5vw" type="number">
+                            <InputIcon width="5vw" type="text" onChange={this.onChangeDiscount} value={discount}>
                                 <FontAwesomeIcon icon="percent" className={styles.percentageIcon} />
                             </InputIcon>
+                            <p className={styles.netPrice}>Net Price: <span>Rp {nominalSeparator(netPrice)}, -</span></p>
                         </div>
                     ) : null
                 }
@@ -267,18 +305,24 @@ class AddProduct extends Component {
                         {this.renderOtherImages()}
                         {this.renderDndArea()}
                     </div>
-                    <div className={styles.tipsContainer}>
-                        <div>
-                            <FontAwesomeIcon icon="info-circle" className={styles.infoIcon} />
-                        </div>
-                        <div>
-                            <h5 className={styles.tipsTitle}>Images Recommendation:</h5>
-                            <p><span>1.</span> hehhhee</p>
-                            <p><span>2.</span> hehhhee</p>
-                            <p><span>3.</span> hehhhee</p>
-                            <p><span>4.</span> hehhhee</p>
-                        </div>
-                    </div>
+                    {this.renderTipsContainer()}
+                </div>
+            </div>
+        );
+    }
+
+    renderTipsContainer = () => {
+        return (
+            <div className={styles.tipsContainer}>
+                <div>
+                    <FontAwesomeIcon icon="info-circle" className={styles.infoIcon} />
+                </div>
+                <div>
+                    <h5 className={styles.tipsTitle}>Images Recommendation:</h5>
+                    <p><span>1.</span> hehhhee</p>
+                    <p><span>2.</span> hehhhee</p>
+                    <p><span>3.</span> hehhhee</p>
+                    <p><span>4.</span> hehhhee</p>
                 </div>
             </div>
         );
