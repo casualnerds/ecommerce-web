@@ -12,6 +12,16 @@
   margin-bottom: 0.2em;
 }
 
+.subInputTitleWrapper {
+  margin: 1vh 0;
+}
+
+.subInputTitle {
+  font-family: "Nunito-ExtraLight";
+  font-size: 0.9em;
+  color: #8C4A11;
+}
+
 .formContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -30,6 +40,10 @@
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+}
+
+.formContainer .formLeftSide .inputName {
+  margin-bottom: 1vw;
 }
 
 .formContainer .formLeftSide .leftSideCard {
@@ -146,6 +160,8 @@
 
 .uploadImageContainer {
   padding-top: 2vh;
+  padding-right: 2vw;
+  margin-bottom: 3vh;
 }
 
 .uploadImageContainer .uploadError {
@@ -414,7 +430,7 @@
   border-radius: 9px;
   padding-left: 3vw;
   border-left: 0.4vw solid #8C4A11;
-  width: 20vw;
+  min-width: 20vw;
   height: 100%;
   -webkit-clip-path: circle(5% at 1.98vw 1.6vw);
           clip-path: circle(5% at 1.98vw 1.6vw);
@@ -447,12 +463,140 @@
 
 .uploadImageContainer .tipsContainer p {
   font-family: "Nunito-Light";
-  font-size: 0.9em;
+  font-size: 0.7vw;
   color: #8C4A11;
   margin-bottom: 0.3vh;
 }
 
 .uploadImageContainer .tipsContainer span {
   font-family: "Nunito-Bold";
+}
+
+.productPublishingContainer {
+  margin-bottom: 2vh;
+}
+
+.addDimensionContainer {
+  margin-bottom: 2vh;
+}
+
+.addDimensionContainer p {
+  font-family: "Nunito-ExtraLight";
+  font-size: 0.7vw;
+  color: #D9B493;
+}
+
+.addDimensionContainer .dimensionContainer {
+  padding: 0.8vw 1vw;
+  background-color: white;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  margin-top: 1vw;
+  width: 20vw;
+}
+
+.addDimensionContainer .dimensionContainer .rowWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 0.5vw;
+}
+
+.addDimensionContainer .dimensionContainer .rowWrapper p {
+  font-family: "Nunito-SemiBold";
+  font-size: 0.8vw;
+  color: #568D99;
+}
+
+.addDimensionContainer .dimensionContainer .rowWrapper div:nth-child(1) {
+  -webkit-box-flex: 4;
+      -ms-flex: 4;
+          flex: 4;
+  margin-right: 0.8vw;
+}
+
+.addDimensionContainer .dimensionContainer .rowWrapper p:nth-child(2) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-right: 0.8vw;
+}
+
+.addDimensionContainer .dimensionContainer .rowWrapper .input {
+  -webkit-box-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+  margin-right: 0.8vw;
+}
+
+.addDimensionContainer .dimensionContainer .rowWrapper .cm {
+  -webkit-box-flex: 6;
+      -ms-flex: 6;
+          flex: 6;
+}
+
+.addProductButtonContainer {
+  margin: 2vw 0;
+}
+
+.addProductButtonContainer p {
+  font-family: "Nunito-ExtraLight";
+  color: #568D99;
+  font-size: 0.7vw;
+}
+
+.addProductButtonContainer p span {
+  font-family: "Nunito-Regular";
+}
+
+.addProductButtonContainer .addProductButton {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 8vw;
+  height: 2.5vw;
+  border-radius: 7px;
+  background-color: #568D99;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.17);
+  cursor: pointer;
+  position: relative;
+  top: 0;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  margin-top: 0.7vw;
+}
+
+.addProductButtonContainer .addProductButton:hover {
+  top: -5px;
+  -webkit-box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+.addProductButtonContainer .addProductButton:active {
+  top: 0;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.17);
+  width: 8.2vw;
+}
+
+.addProductButtonContainer .addProductButton p {
+  font-family: "Nunito-Bold";
+  color: white;
+  font-size: 0.8vw;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 /*# sourceMappingURL=AddProduct.module.css.map */

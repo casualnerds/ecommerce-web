@@ -15,6 +15,7 @@ import {
 import { InputSelect } from '../../modules/InputSelect/InputSelect.module';
 import { InputBasic } from '../../modules/InputBasic/InputBasic.module';
 import { InputIcon } from '../../modules/InputIcon/InputIcon.module';
+import { InputSwitch } from '../../modules/InputSwitch/InputSwitch.module';
 import { TextEditor } from '../../modules/TextEditor/TextEditor.module';
 import { checkAnimation } from '../../themes/lottieAnimations';
 
@@ -35,6 +36,12 @@ class AddProduct extends Component {
                 'Pound',
                 'Genoise'
             ],
+            smallImagesCount: [1, 2, 3],
+            dimensionCount: [
+                { name: 'width', code: 'W' },
+                { name: 'length', code: 'L' },
+                { name: 'height', code: 'H' }
+            ],
             productName: '',
             choosedCategory: '',
             price: 0,
@@ -42,9 +49,9 @@ class AddProduct extends Component {
             discount: 0,
             netPrice: 0,
             isDiscount: false,
-            smallImages: [1, 2, 3],
             editorState: EditorState.createEmpty(),
             uploadedImages: [],
+            isPublished: true,
             uploadError: '',
             dropDepth: 0
         };
@@ -175,6 +182,10 @@ class AddProduct extends Component {
         });
     }
 
+    onClickSwitchPublish = () => {
+        this.setState(prev => ({ isPublished: !prev.isPublished }));
+    }
+
     deleteImage = i => () => {
         const { uploadedImages } = this.state;
         const newArray = [...uploadedImages];
@@ -211,7 +222,7 @@ class AddProduct extends Component {
             <div className={styles.formRightSide}>
                 <div className={styles.rightSideCard}>
                     <h2 className={styles.inputTitle}>Description</h2>
-                    <p className={styles.describer}>Give your best price for its value</p>
+                    <p className={styles.describer}>Describe your product in details for consumers to know what you offered</p>
                     {this.renderTextEditor()}
                 </div>
             </div>
@@ -220,12 +231,13 @@ class AddProduct extends Component {
 
     renderProductNameInput = () => {
         return (
-            <InputBasic
-                type="text"
-                onChange={this.onChangeProductName}
-            // width={500} // optional
-            // height={40}  // optional
-            />
+            <div className={styles.inputName}>
+                <InputBasic
+                    type="text"
+                    onChange={this.onChangeProductName}
+                    placeholder="e.g. Rainbow Cake"
+                />
+            </div>
         );
     }
 
@@ -319,10 +331,10 @@ class AddProduct extends Component {
                 </div>
                 <div>
                     <h5 className={styles.tipsTitle}>Images Recommendation:</h5>
-                    <p><span>1.</span> hehhhee</p>
-                    <p><span>2.</span> hehhhee</p>
-                    <p><span>3.</span> hehhhee</p>
-                    <p><span>4.</span> hehhhee</p>
+                    <p><span>1.</span> Use at least 500x500 px image resolution</p>
+                    <p><span>2.</span> Upload images at difference angles to give your consumer perspective</p>
+                    <p><span>3.</span> Use attractive images to attract your consumers</p>
+                    <p><span>4.</span> Maximize the image up to 4 files</p>
                 </div>
             </div>
         );
@@ -371,11 +383,11 @@ class AddProduct extends Component {
     }
 
     renderOtherImages = () => {
-        const { smallImages, uploadedImages } = this.state;
+        const { smallImagesCount, uploadedImages } = this.state;
         return (
             <div className={styles.smallImagesContainer}>
                 {
-                    smallImages.map((_, i) => (
+                    smallImagesCount.map((_, i) => (
                         <div
                             key={i}
                             className={`${styles.smallImage} ${uploadedImages[i + 1] ? styles.smallImageExist : null}`}
@@ -463,6 +475,67 @@ class AddProduct extends Component {
         );
     }
 
+    renderAddDimension = () => {
+        const { dimensionCount } = this.state;
+        return (
+            <div className={styles.addDimensionContainer}>
+                <h2 className={styles.inputTitle}>The Cake's Dimension</h2>
+                <p>Add your cake dimension in centimeter (e.g. 20x20x10)</p>
+                <div className={styles.dimensionContainer}>
+                    {
+                        dimensionCount.map(dimension => (
+                            <div className={styles.rowWrapper}>
+                                <div>
+                                    <p>{dimension.name} <span>({dimension.code})</span></p>
+                                </div>
+                                <p>:</p>
+                                <div className={styles.input}>
+                                    <InputBasic width="4.5vw" />
+                                </div>
+                                <p className={styles.cm}>cm</p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        );
+    }
+
+    renderProductPublishing = () => {
+        return (
+            <div className={styles.productPublishingContainer}>
+                <h2 className={styles.inputTitle}>Product Publishing</h2>
+                <div className={styles.subInputTitleWrapper}>
+                    <p className={styles.subInputTitle}>Do you want to publish your new product right now?</p>
+                    <p className={styles.subInputTitle}>If you disable this switch you can still switch it on Edit Product.</p>
+                </div>
+                {this.renderSwitch()}
+            </div>
+        );
+    }
+
+    renderSwitch = () => {
+        const { isPublished } = this.state;
+
+        return (
+            <InputSwitch
+                switchValue={isPublished}
+                onClick={this.onClickSwitchPublish}
+            />
+        );
+    }
+
+    renderAddProductButton = () => {
+        return (
+            <div className={styles.addProductButtonContainer}>
+                <p>Please check all the required input form above before click the <span>Add product</span> button below.</p>
+                <div className={styles.addProductButton}>
+                    <p>Add Product</p>
+                </div>
+            </div>
+        );
+    }
+
     render() {
         return (
             <div>
@@ -473,6 +546,9 @@ class AddProduct extends Component {
                     {this.renderRightForm()}
                 </div>
                 {this.renderUploadImages()}
+                {this.renderAddDimension()}
+                {this.renderProductPublishing()}
+                {this.renderAddProductButton()}
             </div >
         );
     }
