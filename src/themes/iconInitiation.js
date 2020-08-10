@@ -6,11 +6,13 @@ import {
     faPlusSquare,
     faEllipsisV,
     faCheckSquare,
-    faPercentage,
+    faPercent,
     faImage,
     faPlus,
     faTimesCircle,
-    faUpload
+    faUpload,
+    faImages,
+    faInfoCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -22,9 +24,11 @@ library.add(
     faPlusSquare,
     faEllipsisV,
     faCheckSquare,
-    faPercentage,
+    faPercent,
     faImage,
     faPlus,
     faTimesCircle,
-    faUpload
+    faUpload,
+    faImages,
+    faInfoCircle
 );

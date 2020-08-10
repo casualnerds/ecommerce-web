@@ -63,11 +63,11 @@
 }
    
 ::-webkit-scrollbar-thumb {
-    background-color: #4CAF50;
+    background-color: #2a302d;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background-color: #45a049;
+    background-color: #404040;
     border-radius: 10px;
 }

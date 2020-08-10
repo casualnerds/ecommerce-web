@@ -10,6 +10,7 @@ class InputBasic extends Component {
         return (
             <>
                 <input
+                    className={styles.inputBasic}
                     type={text}
                     onChange={onChange}
                     style={{

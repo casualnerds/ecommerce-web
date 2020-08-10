@@ -9,7 +9,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #9c9c9c;
+  border: 1px solid #CCCCCC;
   border-radius: 5px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3));
   background-image: linear-gradient(#f2f2f2, #e3e3e3);
@@ -17,7 +17,7 @@
   -webkit-transition: opacity 0.2s ease-in;
   transition: opacity 0.2s ease-in;
   font-family: "Nunito-Light";
-  color: #404040;
+  color: #D9B493;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -46,6 +46,11 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 0 20px;
+}
+
+.selectable .selectableRowWrapper p {
+  font-family: "Nunito-Regular";
+  color: #999999;
 }
 
 .selectable .arrowDownIcon {
@@ -88,12 +93,12 @@
 }
 
 .optionsContainer::-webkit-scrollbar-track {
-  background-color: #9c9c9c;
+  background-color: #FFE1C7;
   border-radius: 10px;
 }
 
 .optionsContainer::-webkit-scrollbar-thumb {
-  background-color: #404040;
+  background-color: #D9B493;
   border-radius: 10px;
 }
 
@@ -109,7 +114,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 0.2px solid #9c9c9c;
+  border-bottom: 0.2px solid #CCCCCC;
   height: 40px;
   background-color: white;
   -webkit-transition: background-color 0.2s ease-in;
@@ -121,8 +126,13 @@
   background-color: #e3e3e3;
 }
 
+.optionsContainer .listCard p {
+  font-family: "Nunito-Regular";
+  color: #999999;
+}
+
 .optionsContainer .listCard .checkIcon {
-  color: #4CAF50;
+  color: #A5CDD6;
 }
 
 .optionsContainer .listCard div {

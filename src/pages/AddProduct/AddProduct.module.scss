@@ -3,31 +3,51 @@
 
 .title {
  font-family: $extraLight;
- color: $basicFontLight;
+ color: $silver;
  font-size: 17px;
  margin-bottom: 20px;
 }
 
 .inputTitle {
-    font-family: $semiBold;
-    font-size: 20px;
-    color: $basicFontDark;
+    font-family: $extraLight;
+    font-size: 1em;
+    color: $scheme1;
     margin-bottom: 5px;
 }
 
 .formContainer {
     display: flex;
-    border-bottom: 1px dashed $basicFontLight;
+    margin-top: 2vh;
 
     .formLeftSide {
         flex: 1;
-        border-right: 1px dashed $basicFontLight;
+
+        .leftSideCard {
+            background-color: $white;
+            box-shadow: 0 0 10px $boxShadow2;
+            height: 100%;
+            padding: 1vw 2vw;
+            border-radius: 7px;
+        }
+
+        .priceIcon {
+            font-family: $bold;
+            color: $dustyGray;
+        }
     };
 
     .formRightSide {
         flex: 2;
-        padding-left: 100px;
-        padding-bottom: 50px;
+        padding: 0 2vw;
+        
+        .rightSideCard {
+            height: 100%;
+            background-color: $white;
+            box-shadow: 0 0 10px $boxShadow2;
+            padding: 1vw 2vw;
+            padding-bottom: 5vh;
+            border-radius: 7px;
+        }
     }
 }
 
@@ -46,13 +66,13 @@
     }
 
     .checkIconChecked {
-        color: $secondaryColor;
+        color: $scheme2;
     }
 
     .discountText {
-        font-family: $semiBold;
+        font-family: $extraLight;
         font-size: 17px;
-        color: $basicFontDark;
+        color: $scheme1;
         user-select: none;
     }
 }
@@ -70,30 +90,35 @@
     }
 
     .percentageIcon {
-        font-size: 20px;
-        color: $basicFontDark;
+        font-size: 15px;
+        color: $dustyGray;
     }
 }
 
 .uploadImageContainer {
-    padding-top: 20px;
+    padding-top: 2vh;
 
     .uploadError {
         font-family: $light;
         font-size: 13px;
         color: $burntSienna;
     }
+
+    .uploadAndDescWrapper {
+        margin: 2vh 0;
+        display: flex;
+    }
     
     .imagesContainer {
         display: flex;
         align-items: center;
-        margin: 20px 0;
         padding: 2vw 2vw;
         width: 50vw;
         height: 20vw;
         background-color: $white;
         border-radius: 8px;
         box-shadow: 0 0 10px $boxShadow2;
+        margin-right: 1vw;
 
         .mainImage {
             display: flex;
@@ -102,13 +127,13 @@
             align-items: center;
             width: 16vw;
             height: 16vw;
-            border: 2px dashed $basicFontLight;
+            border: 2px dashed $silver;
             stroke-dasharray: 20px;
             border-radius: 10px;
             position: relative;
     
             &:hover {
-                border: 2px dashed $secondaryColor;
+                border: 2px dashed $scheme2;
             }
     
             .addImageTextContainer {
@@ -116,32 +141,21 @@
                 align-items: center;
     
                 .plusIconMain {
-                    color: $secondaryColor;
+                    color: $scheme2;
                     font-size: 25px;
                     margin-right: 10px;
                 }
         
                 .addImageTextMain {
                     font-family: $regular;
-                    color: $secondaryColor;
+                    color: $scheme2;
                 }
             }
     
             .uploadMainIcon {
                 font-size: 5em;
-                color: $basicFontLight;
-            }
-
-            .inputFile {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                height: 100%;
-                opacity: 0;
-                cursor: pointer;
+                color: $silver;
+                margin-bottom: 10px;
             }
 
             .deleteMainImageIconContainer {
@@ -155,17 +169,17 @@
                 padding: 3px;
 
                 .deleteMainImageIcon {
-                    color: $burntSienna;
+                    color: $apricot;
                     font-size: 30px;
                 }
             }
         }
     
         .mainImageExist {
-            border: 2px solid $secondaryColor;
+            border: 2px solid $scheme2;
 
             &:hover {
-                border: 2px solid $secondaryColor;
+                border: 2px solid $scheme2;
             }
         }
     
@@ -180,14 +194,43 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 1px dashed $basicFontLight;
+                border: 2px dashed $silver;
                 border-radius: 7px;
                 width: 5vw;
                 height: 5vw;
+                position: relative;
+
+                .deleteSmallImageIconContainer {
+                    position: absolute;
+                    top: -12px;
+                    right: -12px;
+                    cursor: pointer;
+                    background-color: $white;
+                    box-shadow: 0 0 3px $boxShadow;
+                    border-radius: 20px;
+                    padding: 1px;
+    
+                    .deleteSmallImageIcon {
+                        color: $apricot;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .smallImageExist {
+                border: 2px solid $scheme2;
+    
+                &:hover {
+                    border: 2px solid $scheme2;
+                }
+            }
+
+            .smallImagePointer {
+                cursor: pointer;   
             }
 
             .smallImageIcon {
-                color: $basicFontLight;
+                color: $scheme2;
                 font-size: 20px;
             }
         }
@@ -201,27 +244,102 @@
 
             .dndMessageBox {
                 text-align: center;
-                border: 1px dashed $secondaryColor;
+                border: 1px dashed $scheme2;
                 border-radius: 10px;
                 width: 100%;
                 padding: 1vw 0;
-                transition: padding 0.2s ease-in;
+                background-color: $white;
+                transition: all 0.2s ease-in;
 
-                .uploadIcon {
+                .uploadDragIcon {
                     font-size: 20px;
                     margin-bottom: 10px;
-                    color: $basicFontLight;
+                    color: $silver;
                 }
 
                 p {
                     font-family: $regular;
-                    color: $secondaryColor;
+                    color: $scheme2;
                 }
             }
 
             .dndMessageBoxExpand {
                 padding: 4vw 0;
+                background-color: $scheme2Tr;
             }
+        }
+
+        .inputFile {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            text-indent: -999em;
+            cursor: pointer;
+        }
+
+        .checkAnimationContainer {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .completeUpload {
+                font-family: $semiBold;
+                font-size: 17px;
+                color: $scheme2;
+                margin-top: 1vw;
+            }
+        }
+    }
+
+    .tipsContainer {
+        display: flex;
+        padding: 2vh 0.8vw;
+        background-color: $scheme5;
+        border-radius: 9px;
+        padding-left: 3vw;
+        border-left: 0.4vw solid $scheme3;
+        width: 20vw;
+        clip-path: circle(5% at 1.98vw 1.6vw);
+        transition: all 0.5s ease-in;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+            clip-path: circle(100%);
+        }
+
+        .infoIcon {
+            color: $scheme3;
+            font-size: 1.2vw;
+            position: absolute;
+            top: 1vw;
+            left: 1vw;
+        }
+
+        .tipsTitle {
+            font-family: $bold;
+            color: $dustyGray;
+            margin-top: 0.4vh;
+            margin-bottom: 1vh;
+            color: $scheme3;
+        }
+
+        p {
+            font-family: $light;
+            font-size: 0.9em;
+            color: $scheme3;
+            margin-bottom: 0.3vh;
+        }
+
+        span {
+            font-family: $bold;
         }
     }
 }

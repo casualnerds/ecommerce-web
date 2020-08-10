@@ -1,24 +1,24 @@
 @import '../../themes/colors';
 @import '../../themes/fontType';
 
-input {
+.inputBasic {
     height: 35px;
     width: 20vw;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     padding: 0 20px;
-    border: 1px solid $basicFontLight;
+    border: 1px solid $silver;
     border-radius: 5px;
-    font-family: $regular;
+    font-family: $semiBold;
     font-size: 15px;
-    color: $basicFontDark;
+    color: $dustyGray;
     box-shadow: none;
     transition: all 0.2s ease-in;
 
     &:focus {
         outline: none;
-        border: 2px solid $secondaryColor;
-        box-shadow: 0 0 10px $secondaryColorTr;
+        border: 2px solid $scheme2;
+        box-shadow: 0 0 10px $scheme2Tr;
     }
 }

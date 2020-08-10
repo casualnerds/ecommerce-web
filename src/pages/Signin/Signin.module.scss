@@ -44,7 +44,7 @@
 
         input[type=submit] {
             width: 100%;
-            background-color: $secondaryColor;
+            background-color: $scheme2;
             margin: 8px 0;
             padding: 8px 0;
             color: $white;
@@ -54,7 +54,7 @@
         }
 
         input[type=submit]:hover {
-            background-color: $primaryColor;
+            background-color: $scheme1;
         }
 
         a{

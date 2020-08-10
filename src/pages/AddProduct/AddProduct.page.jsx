@@ -2,17 +2,22 @@ import React, { Component, createRef } from "react";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState } from 'draft-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Lottie from 'react-lottie';
 
 import styles from "./AddProduct.module.css";
 import { InputSelect } from '../../modules/InputSelect/InputSelect.module';
 import { InputBasic } from '../../modules/InputBasic/InputBasic.module';
 import { InputIcon } from '../../modules/InputIcon/InputIcon.module';
 import { TextEditor } from '../../modules/TextEditor/TextEditor.module';
+import { checkAnimation } from '../../themes/lottieAnimations';
 
 class AddProduct extends Component {
     constructor(props) {
         super(props);
-        this.inputMainFileRef = createRef();
+        this.image0 = createRef();
+        this.image1 = createRef();
+        this.image2 = createRef();
+        this.image3 = createRef();
         this.state = {
             categories: [
                 'Sneaker',
@@ -31,8 +36,7 @@ class AddProduct extends Component {
             editorState: EditorState.createEmpty(),
             uploadedImages: [],
             uploadError: '',
-            dropDepth: 0,
-            inDropZone: false
+            dropDepth: 0
         };
     }
 
@@ -60,15 +64,15 @@ class AddProduct extends Component {
         this.setState({ editorState });
     }
 
-    onChangeFile = (e) => {
+    onChangeFile = (e, i) => {
         const { uploadedImages } = this.state;
-        const file = e.target.files[0];
+        const file = e.target.files[0]; // pick the image file
         this.setState({ uploadError: '' });
+
         if (file) {
-            const newArrayImages = [
-                ...uploadedImages,
-                URL.createObjectURL(e.target.files[0])
-            ];
+            const newArrayImages = uploadedImages;
+            newArrayImages[i] = URL.createObjectURL(file);
+
             if (file.type.split("/")[0] === "image") {
                 this.setState({
                     uploadedImages: newArrayImages
@@ -82,17 +86,22 @@ class AddProduct extends Component {
     }
 
     onDragEnterFiles = e => {
+        const { dropDepth } = this.state;
         e.preventDefault();
         e.stopPropagation();
-        console.log('enter');
-        this.setState({ isDragOver: true });
+
+        this.setState({
+            dropDepth: dropDepth + 1
+        });
     }
 
     onDragLeaveFiles = e => {
+        const { dropDepth } = this.state;
         e.preventDefault();
         e.stopPropagation();
-        console.log('leave');
-        this.setState({ isDragOver: false });
+        this.setState({
+            dropDepth: dropDepth - 1
+        });
     }
 
     onDragOverFiles = e => {
@@ -104,12 +113,38 @@ class AddProduct extends Component {
     onDropFiles = e => {
         e.preventDefault();
         e.stopPropagation();
-        console.log(e.dataTransfer.files);
+        const { uploadedImages } = this.state;
+        const newArray = [...uploadedImages];
+
+        this.setState({ dropDepth: 0, uploadError: '' });
+        const filesObject = e.dataTransfer.files;
+        const filesArray = Object.keys(filesObject);
+        filesArray.forEach(key => {
+            const isImageFormat = filesObject[key].type.split("/")[0] === "image";
+            if ((newArray.length < 4)) {
+                if (isImageFormat) {
+                    newArray.push(URL.createObjectURL(filesObject[key]));
+                } else {
+                    this.setState({
+                        uploadError: 'Only allow image file type.'
+                    });
+                }
+            }
+        });
+        this.setState({
+            uploadedImages: newArray
+        });
     }
 
-    deleteMainImage = () => {
-        this.setState({ uploadedImages: [] }, () => {
-            this.inputMainFileRef.current.value = "";
+    deleteImage = i => () => {
+        const { uploadedImages } = this.state;
+        const newArray = [...uploadedImages];
+        newArray.splice(i, 1);
+
+        this.setState({ uploadedImages: newArray }, () => {
+            for (let x = 0; x <= newArray.length; x++) { // delete all choosen file on input
+                this[`image${x}`].current.value = "";
+            }
         });
     }
 
@@ -149,7 +184,7 @@ class AddProduct extends Component {
             // width={400} // (optional)
             // height={30} // (optional)
             >
-                <p>Rp</p>
+                <p className={styles.priceIcon}>Rp</p>
             </InputIcon>
         );
     }
@@ -180,7 +215,7 @@ class AddProduct extends Component {
                     isDiscount ? (
                         <div className={styles.discountInputContainer}>
                             <InputIcon width="5vw" type="number">
-                                <FontAwesomeIcon icon="percentage" className={styles.percentageIcon} />
+                                <FontAwesomeIcon icon="percent" className={styles.percentageIcon} />
                             </InputIcon>
                         </div>
                     ) : null
@@ -195,10 +230,24 @@ class AddProduct extends Component {
             <div className={styles.uploadImageContainer}>
                 <h2 className={styles.inputTitle}>Upload Images</h2>
                 <p className={styles.uploadError}>{uploadError}</p>
-                <div className={styles.imagesContainer}>
-                    {this.renderMainImage()}
-                    {this.renderOtherImages()}
-                    {this.renderDndArea()}
+                <div className={styles.uploadAndDescWrapper}>
+                    <div className={styles.imagesContainer}>
+                        {this.renderMainImage()}
+                        {this.renderOtherImages()}
+                        {this.renderDndArea()}
+                    </div>
+                    <div className={styles.tipsContainer}>
+                        <div>
+                            <FontAwesomeIcon icon="info-circle" className={styles.infoIcon} />
+                        </div>
+                        <div>
+                            <h5 className={styles.tipsTitle}>Images Recommendation:</h5>
+                            <p><span>1.</span> hehhhee</p>
+                            <p><span>2.</span> hehhhee</p>
+                            <p><span>3.</span> hehhhee</p>
+                            <p><span>4.</span> hehhhee</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
@@ -217,7 +266,7 @@ class AddProduct extends Component {
                 }}
             >
                 <FontAwesomeIcon
-                    icon="image"
+                    icon="images"
                     className={styles.uploadMainIcon}
                     style={{ opacity: uploadedImages[0] ? 0 : 1 }}
                 />
@@ -229,15 +278,15 @@ class AddProduct extends Component {
                     <p className={styles.addImageTextMain}>Add new image</p>
                 </div>
                 <input
-                    ref={this.inputMainFileRef}
+                    ref={this.image0}
                     type="file"
                     className={styles.inputFile}
-                    onChange={this.onChangeFile}
+                    onChange={event => this.onChangeFile(event, 0)}
                     accept="image/*"
                 />
                 {
                     uploadedImages[0] ? (
-                        <div className={styles.deleteMainImageIconContainer} onClick={this.deleteMainImage}>
+                        <div className={styles.deleteMainImageIconContainer} onClick={this.deleteImage(0)}>
                             <FontAwesomeIcon icon="times-circle" className={styles.deleteMainImageIcon} />
                         </div>
                     ) : null
@@ -247,13 +296,42 @@ class AddProduct extends Component {
     }
 
     renderOtherImages = () => {
-        const { smallImages } = this.state;
+        const { smallImages, uploadedImages } = this.state;
         return (
             <div className={styles.smallImagesContainer}>
                 {
-                    smallImages.map((image, i) => (
-                        <div key={i} className={styles.smallImage}>
-                            <FontAwesomeIcon icon="plus" className={styles.smallImageIcon} />
+                    smallImages.map((_, i) => (
+                        <div
+                            key={i}
+                            className={`${styles.smallImage} ${uploadedImages[i + 1] ? styles.smallImageExist : null}`}
+                            style={{
+                                backgroundImage: uploadedImages[i + 1] ? `url(${uploadedImages[i + 1]})` : null,
+                                backgroundSize: "contain",
+                                backgroundRepeat: "no-repeat",
+                                backgroundPosition: "center"
+                            }}
+                        >
+                            {
+                                uploadedImages[i] ? ( // render if previous index image is exist
+                                    <input
+                                        ref={this[`image${i + 1}`]}
+                                        type="file"
+                                        className={styles.inputFile}
+                                        onChange={event => this.onChangeFile(event, i + 1)}
+                                        accept="image/*"
+                                    />
+                                ) : null
+                            }
+
+                            {
+                                uploadedImages[i + 1] ? (
+                                    <div className={styles.deleteSmallImageIconContainer} onClick={this.deleteImage(i + 1)}>
+                                        <FontAwesomeIcon icon="times-circle" className={styles.deleteSmallImageIcon} />
+                                    </div>
+                                ) : (
+                                        <FontAwesomeIcon icon="plus" className={styles.smallImageIcon} />
+                                    )
+                            }
                         </div>
                     ))
                 }
@@ -262,42 +340,76 @@ class AddProduct extends Component {
     }
 
     renderDndArea = () => {
-        const { isDragOver } = this.state;
+        const { dropDepth, uploadedImages } = this.state;
         return (
-            <div
-                className={styles.dndAreaContainer}
-                onDragEnter={this.onDragEnterFiles}
-                onDragLeave={this.onDragLeaveFiles}
-                onDragOver={this.onDragOverFiles}
-                onDrop={this.onDropFiles}
-            >
-                <div className={`${styles.dndMessageBox} ${isDragOver ? styles.dndMessageBoxExpand : null}`}>
-                    <FontAwesomeIcon icon="upload" className={styles.uploadIcon} />
-                    <p>or Drag n Drop </p>
-                    <p>your file or multiple images here</p>
-                </div>
+            <>
+                {
+                    uploadedImages.length === 4 ? (
+                        this.renderCheckAnimation()
+                    ) : (
+                            <div
+                                className={styles.dndAreaContainer}
+                                onDragEnter={this.onDragEnterFiles}
+                                onDragLeave={this.onDragLeaveFiles}
+                                onDragOver={this.onDragOverFiles}
+                                onDrop={this.onDropFiles}
+                            >
+                                <div className={`${styles.dndMessageBox} ${dropDepth > 0 ? styles.dndMessageBoxExpand : null}`}>
+                                    <FontAwesomeIcon icon="upload" className={styles.uploadDragIcon} />
+                                    <p>or Drop</p>
+                                    <p>your multiple images here</p>
+                                </div>
+                            </div>
+                        )
+                }
+            </>
+        );
+    }
+
+    renderCheckAnimation = () => {
+        const options = {
+            loop: false,
+            autoplay: true,
+            animationData: checkAnimation,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+
+        return (
+            <div className={styles.checkAnimationContainer}>
+                <Lottie
+                    options={options}
+                    height={'4vw'}
+                    width={'4vw'}
+                />
+                <p className={styles.completeUpload}>Yeay! your product images are complete.</p>
             </div>
         );
     }
 
-    // TODO ONLY UPLOAD IMAGES
     render() {
         return (
             <div>
                 <h3 className={styles.title}>Add New Product</h3>
+                <h2 className={styles.inputTitle}>Product Information</h2>
                 <div className={styles.formContainer}>
                     <div className={styles.formLeftSide}>
-                        <h2 className={styles.inputTitle}>Product's Name</h2>
-                        {this.renderProductNameInput()}
-                        <h2 className={styles.inputTitle}>Category</h2>
-                        {this.renderInputSelect()}
-                        <h2 className={styles.inputTitle}>Price</h2>
-                        {this.renderPriceInput()}
-                        {this.renderDiscountOption()}
+                        <div className={styles.leftSideCard}>
+                            <h2 className={styles.inputTitle}>Name</h2>
+                            {this.renderProductNameInput()}
+                            <h2 className={styles.inputTitle}>Category</h2>
+                            {this.renderInputSelect()}
+                            <h2 className={styles.inputTitle}>Price</h2>
+                            {this.renderPriceInput()}
+                            {this.renderDiscountOption()}
+                        </div>
                     </div>
                     <div className={styles.formRightSide}>
-                        <h2 className={styles.inputTitle}>Description</h2>
-                        {this.renderTextEditor()}
+                        <div className={styles.rightSideCard}>
+                            <h2 className={styles.inputTitle}>Description</h2>
+                            {this.renderTextEditor()}
+                        </div>
                     </div>
                 </div>
                 {this.renderUploadImages()}

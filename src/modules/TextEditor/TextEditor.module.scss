@@ -6,33 +6,35 @@
 
 .toolbar {
     border-radius: 7px;
+    border: 1px solid $silver;
 }
 
 .editor {
-    border: 1px solid $basicFontLight;
+    border: 1px solid $silver;
     border-radius: 7px;
     height: 200px;
     padding: 0 10px;
     box-shadow: none;
     transition: all 0.2s ease-in;
     line-height: 10px;
+    color: $dustyGray;
 
     &::-webkit-scrollbar {
         width: 6px;
       }
        
     &::-webkit-scrollbar-track {
-        background-color: $basicFontLight;
+        background-color: $scheme5;
         border-radius: 10px;
       }
        
     &::-webkit-scrollbar-thumb {
-        background-color: $basicFontDark;
+        background-color: $scheme4;
         border-radius: 10px;
       }
 }
 
 .editorFocus {
-    border: 2px solid $secondaryColor;
-    box-shadow: 0 0 10px $secondaryColorTr;
+    border: 2px solid $scheme2;
+    box-shadow: 0 0 10px $scheme2Tr;
 }
