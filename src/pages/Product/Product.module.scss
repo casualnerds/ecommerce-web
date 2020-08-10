@@ -1,231 +1,67 @@
 @import '../../themes/colors';
 
-ul{
-    position: absolute;
-    width: 78vw;
-    margin: 10px 0;
-    padding: 10px;
-    // border: 1px solid red;
+.productListContainer{
+
+    ul{
+        position: absolute;
+        width: 78vw;
+        margin: 10px 0;
+        padding: 10px;
+        // border: 1px solid red;
+        
     
-
-    li{
-        display: flex;
-        background-color: $white;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        padding: 20px 20px;
-        color: black;
-        margin: 8px 0;
-        transition: background-color .5s;
-        border-radius: 4px;
-        cursor: pointer;
-
-
-        span{
-            text-align: center;
-            margin: 0;
-            padding: 0;
-
-            &:nth-child(1){
-                width: 30px;
+        li{
+            display: flex;
+            background-color: $white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px 20px;
+            color: black;
+            margin: 8px 0;
+            transition: background-color .5s;
+            border-radius: 4px;
+            cursor: pointer;
+    
+    
+            span{
+                text-align: center;
+                margin: 0;
+                padding: 0;
+    
+                &:nth-child(1){
+                    width: 30px;
+                }
+    
+                &:nth-child(2){
+                    width: 200px;
+                }
+    
+                &:nth-child(3){
+                    width: 200px;
+                }
+    
+                &:nth-child(4){
+                    width: 200px;
+                }
+    
+                &:nth-child(5){
+                    width: 200px;
+                }
+    
+                &:nth-child(6){
+                    width: 200px;
+                }
+    
+                &:nth-child(7){
+                    width: 80px;
+                }
             }
-
-            &:nth-child(2){
-                width: 200px;
+    
+            &:hover{
+                background-color: $silver;
+    
+                
             }
-
-            &:nth-child(3){
-                width: 200px;
-            }
-
-            &:nth-child(4){
-                width: 200px;
-            }
-
-            &:nth-child(5){
-                width: 200px;
-            }
-
-            &:nth-child(6){
-                width: 200px;
-            }
-
-            &:nth-child(7){
-                width: 80px;
-            }
-        }
-
-        &:hover{
-            background-color: $silver;
-
-            
         }
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// @mixin paddingCustome {
-//     padding: 12px 15px;
-// }
-
-// @mixin hoverAndList {
-//     opacity: 1;
-//     visibility: visible;
-// }
-
-// .productContainer{
-//     display: flex;
-//     flex-direction: column;
-//     width: 78vw;
-//     height: 30vw;
-//     background-color: $white;
-//     margin-top: 20px;
-//     padding: 20px;
-//     transition: width 0.2s ease-in;
-//     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-
-//     .addProduct{
-//         width: 100%;
-//         background-color: $white;
-//         border-bottom: 2px solid $primaryColor;
-//         // border: 1px solid red;
-//         margin: 0;
-//         padding-bottom: 6px;
-
-//         .spanCustom{
-//             font-size: 1.2rem;
-//             padding: 6px 6px;
-//         }
-//     }
-
-    
-//     .dropdown{
-//         width: 20rem;
-//         position: relative; 
-//         margin: 10px 0;
-//         // z-index: -1;
-
-//         &:hover{
-//             @include hoverAndList;
-
-//             .dropdownList{
-//                 @include hoverAndList;
-//             }
-//         }
-        
-//         .dropdownSelect{
-//             display: flex;
-//             align-items: center;
-//             justify-content: space-between;
-//             padding: 12px 15px;
-//             border-radius: 4px;
-//             background-color: $white;
-//             width: 100%;
-//             border: 1px solid $primaryColor;
-//             cursor: pointer;
-//         }
-
-//         .dropdownList{
-//             border-radius: 4px;
-//             background-color: $white;
-//             position: absolute;
-//             border: 1px solid $primaryColor;
-//             top: 110%;
-//             left: 0;
-//             right: 0;
-//             opacity: 0;
-//             visibility: hidden;
-//             transition: opacity 0.2s, visibility 0.2s linear;
-
-//             .dropdownListItem{
-//                 padding: 10px 15px;
-//             }    
-
-//         }
-
-//     }
-
-  
-
-//     .productTable{
-//         border-collapse: collapse;
-//         margin: 10px 0;
-//         width: 100%;
-//         min-width: 400px;
-//         border-radius: 5px 5px 0 0;
-//         overflow: hidden;
-       
-
-//         thead{
-//             tr{
-//                 background-color: $primaryColor;
-//                 text-align: left;
-//                 font-weight: bold;
-//                 th{
-//                     @include paddingCustome;
-//                 }
-
-                
-//             }
-//         }
-
-//         tbody{
-//             tr{
-//                 td{
-//                    @include paddingCustome;
-//                    border-bottom: 1px solid #dddddd;
-//                 }
-//                 &:nth-of-type(even){
-//                     background-color: #f3f3f3;
-//                 }
-
-//                 &:last-of-type {
-//                     border-bottom: 2px solid $primaryColor;
-//                 }
-
-                
-//             }
-
-
-//         }
-
-
-//     }
-
-//     .activeRow{
-//         font-weight: bold;
-//         color: $secondaryColor;
-//     }
-// }
-
-// .productContainerExpand{
-//     width: 92vw;
-// }

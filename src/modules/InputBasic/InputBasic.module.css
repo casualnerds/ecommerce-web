@@ -1,4 +1,4 @@
-input[type=text] {
+input {
   height: 35px;
   width: 20vw;
   margin-bottom: 20px;
@@ -20,7 +20,7 @@ input[type=text] {
   transition: all 0.2s ease-in;
 }
 
-input[type=text]:focus {
+input:focus {
   outline: none;
   border: 2px solid #4CAF50;
   -webkit-box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);

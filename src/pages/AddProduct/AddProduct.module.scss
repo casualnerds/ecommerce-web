@@ -9,7 +9,7 @@
 }
 
 .inputTitle {
-    font-family: $bold;
+    font-family: $semiBold;
     font-size: 20px;
     color: $basicFontDark;
     margin-bottom: 5px;
@@ -17,14 +17,211 @@
 
 .formContainer {
     display: flex;
+    border-bottom: 1px dashed $basicFontLight;
 
     .formLeftSide {
         flex: 1;
-        border-right: 1px solid $basicFontLight;
+        border-right: 1px dashed $basicFontLight;
     };
 
     .formRightSide {
         flex: 2;
         padding-left: 100px;
+        padding-bottom: 50px;
+    }
+}
+
+.checkDiscountWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    
+    .checkIcon {
+        cursor: pointer;
+        color: $mercury;
+        font-size: 20px;
+        margin-right: 10px;
+        transition: color 0.2s ease-in;
+    }
+
+    .checkIconChecked {
+        color: $secondaryColor;
+    }
+
+    .discountText {
+        font-family: $semiBold;
+        font-size: 17px;
+        color: $basicFontDark;
+        user-select: none;
+    }
+}
+
+.discountInputContainer {
+    animation: fadeIn 0.2s ease-in;
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }        
+    }
+
+    .percentageIcon {
+        font-size: 20px;
+        color: $basicFontDark;
+    }
+}
+
+.uploadImageContainer {
+    padding-top: 20px;
+
+    .uploadError {
+        font-family: $light;
+        font-size: 13px;
+        color: $burntSienna;
+    }
+    
+    .imagesContainer {
+        display: flex;
+        align-items: center;
+        margin: 20px 0;
+        padding: 2vw 2vw;
+        width: 50vw;
+        height: 20vw;
+        background-color: $white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px $boxShadow2;
+
+        .mainImage {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            width: 16vw;
+            height: 16vw;
+            border: 2px dashed $basicFontLight;
+            stroke-dasharray: 20px;
+            border-radius: 10px;
+            position: relative;
+    
+            &:hover {
+                border: 2px dashed $secondaryColor;
+            }
+    
+            .addImageTextContainer {
+                display: flex;
+                align-items: center;
+    
+                .plusIconMain {
+                    color: $secondaryColor;
+                    font-size: 25px;
+                    margin-right: 10px;
+                }
+        
+                .addImageTextMain {
+                    font-family: $regular;
+                    color: $secondaryColor;
+                }
+            }
+    
+            .uploadMainIcon {
+                font-size: 5em;
+                color: $basicFontLight;
+            }
+
+            .inputFile {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            .deleteMainImageIconContainer {
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                cursor: pointer;
+                background-color: $white;
+                box-shadow: 0 0 5px $boxShadow;
+                border-radius: 20px;
+                padding: 3px;
+
+                .deleteMainImageIcon {
+                    color: $burntSienna;
+                    font-size: 30px;
+                }
+            }
+        }
+    
+        .mainImageExist {
+            border: 2px solid $secondaryColor;
+
+            &:hover {
+                border: 2px solid $secondaryColor;
+            }
+        }
+    
+        .smallImagesContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-self: stretch;
+            margin: 0 40px;
+    
+            .smallImage {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px dashed $basicFontLight;
+                border-radius: 7px;
+                width: 5vw;
+                height: 5vw;
+            }
+
+            .smallImageIcon {
+                color: $basicFontLight;
+                font-size: 20px;
+            }
+        }
+
+        .dndAreaContainer {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            align-self: stretch;
+
+            .dndMessageBox {
+                text-align: center;
+                border: 1px dashed $secondaryColor;
+                border-radius: 10px;
+                width: 100%;
+                padding: 1vw 0;
+                transition: padding 0.2s ease-in;
+
+                .uploadIcon {
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                    color: $basicFontLight;
+                }
+
+                p {
+                    font-family: $regular;
+                    color: $secondaryColor;
+                }
+            }
+
+            .dndMessageBoxExpand {
+                padding: 4vw 0;
+            }
+        }
     }
 }

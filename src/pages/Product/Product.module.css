@@ -1,11 +1,11 @@
-ul {
+.productListContainer ul {
   position: absolute;
   width: 78vw;
   margin: 10px 0;
   padding: 10px;
 }
 
-ul li {
+.productListContainer ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,41 +21,41 @@ ul li {
   cursor: pointer;
 }
 
-ul li span {
+.productListContainer ul li span {
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-ul li span:nth-child(1) {
+.productListContainer ul li span:nth-child(1) {
   width: 30px;
 }
 
-ul li span:nth-child(2) {
+.productListContainer ul li span:nth-child(2) {
   width: 200px;
 }
 
-ul li span:nth-child(3) {
+.productListContainer ul li span:nth-child(3) {
   width: 200px;
 }
 
-ul li span:nth-child(4) {
+.productListContainer ul li span:nth-child(4) {
   width: 200px;
 }
 
-ul li span:nth-child(5) {
+.productListContainer ul li span:nth-child(5) {
   width: 200px;
 }
 
-ul li span:nth-child(6) {
+.productListContainer ul li span:nth-child(6) {
   width: 200px;
 }
 
-ul li span:nth-child(7) {
+.productListContainer ul li span:nth-child(7) {
   width: 80px;
 }
 
-ul li:hover {
+.productListContainer ul li:hover {
   background-color: #CCCCCC;
 }
 /*# sourceMappingURL=Product.module.css.map */

@@ -6,7 +6,7 @@
 }
 
 .inputTitle {
-  font-family: "Nunito-Bold";
+  font-family: "Nunito-SemiBold";
   font-size: 20px;
   color: #404040;
   margin-bottom: 5px;
@@ -16,13 +16,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-bottom: 1px dashed #9c9c9c;
 }
 
 .formContainer .formLeftSide {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  border-right: 1px solid #9c9c9c;
+  border-right: 1px dashed #9c9c9c;
 }
 
 .formContainer .formRightSide {
@@ -30,5 +31,265 @@
       -ms-flex: 2;
           flex: 2;
   padding-left: 100px;
+  padding-bottom: 50px;
+}
+
+.checkDiscountWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkDiscountWrapper .checkIcon {
+  cursor: pointer;
+  color: #e3e3e3;
+  font-size: 20px;
+  margin-right: 10px;
+  -webkit-transition: color 0.2s ease-in;
+  transition: color 0.2s ease-in;
+}
+
+.checkDiscountWrapper .checkIconChecked {
+  color: #4CAF50;
+}
+
+.checkDiscountWrapper .discountText {
+  font-family: "Nunito-SemiBold";
+  font-size: 17px;
+  color: #404040;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.discountInputContainer {
+  -webkit-animation: fadeIn 0.2s ease-in;
+          animation: fadeIn 0.2s ease-in;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.discountInputContainer .percentageIcon {
+  font-size: 20px;
+  color: #404040;
+}
+
+.uploadImageContainer {
+  padding-top: 20px;
+}
+
+.uploadImageContainer .uploadError {
+  font-family: "Nunito-Light";
+  font-size: 13px;
+  color: #ed5555;
+}
+
+.uploadImageContainer .imagesContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 20px 0;
+  padding: 2vw 2vw;
+  width: 50vw;
+  height: 20vw;
+  background-color: white;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.uploadImageContainer .imagesContainer .mainImage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 16vw;
+  height: 16vw;
+  border: 2px dashed #9c9c9c;
+  stroke-dasharray: 20px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.uploadImageContainer .imagesContainer .mainImage:hover {
+  border: 2px dashed #4CAF50;
+}
+
+.uploadImageContainer .imagesContainer .mainImage .addImageTextContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.uploadImageContainer .imagesContainer .mainImage .addImageTextContainer .plusIconMain {
+  color: #4CAF50;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.uploadImageContainer .imagesContainer .mainImage .addImageTextContainer .addImageTextMain {
+  font-family: "Nunito-Regular";
+  color: #4CAF50;
+}
+
+.uploadImageContainer .imagesContainer .mainImage .uploadMainIcon {
+  font-size: 5em;
+  color: #9c9c9c;
+}
+
+.uploadImageContainer .imagesContainer .mainImage .inputFile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.uploadImageContainer .imagesContainer .mainImage .deleteMainImageIconContainer {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  cursor: pointer;
+  background-color: white;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.17);
+  border-radius: 20px;
+  padding: 3px;
+}
+
+.uploadImageContainer .imagesContainer .mainImage .deleteMainImageIconContainer .deleteMainImageIcon {
+  color: #ed5555;
+  font-size: 30px;
+}
+
+.uploadImageContainer .imagesContainer .mainImageExist {
+  border: 2px solid #4CAF50;
+}
+
+.uploadImageContainer .imagesContainer .mainImageExist:hover {
+  border: 2px solid #4CAF50;
+}
+
+.uploadImageContainer .imagesContainer .smallImagesContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  margin: 0 40px;
+}
+
+.uploadImageContainer .imagesContainer .smallImagesContainer .smallImage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px dashed #9c9c9c;
+  border-radius: 7px;
+  width: 5vw;
+  height: 5vw;
+}
+
+.uploadImageContainer .imagesContainer .smallImagesContainer .smallImageIcon {
+  color: #9c9c9c;
+  font-size: 20px;
+}
+
+.uploadImageContainer .imagesContainer .dndAreaContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+}
+
+.uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBox {
+  text-align: center;
+  border: 1px dashed #4CAF50;
+  border-radius: 10px;
+  width: 100%;
+  padding: 1vw 0;
+  -webkit-transition: padding 0.2s ease-in;
+  transition: padding 0.2s ease-in;
+}
+
+.uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBox .uploadIcon {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #9c9c9c;
+}
+
+.uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBox p {
+  font-family: "Nunito-Regular";
+  color: #4CAF50;
+}
+
+.uploadImageContainer .imagesContainer .dndAreaContainer .dndMessageBoxExpand {
+  padding: 4vw 0;
 }
 /*# sourceMappingURL=AddProduct.module.css.map */
