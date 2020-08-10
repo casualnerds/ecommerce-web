@@ -20,13 +20,13 @@ class AddProduct extends Component {
         this.image3 = createRef();
         this.state = {
             categories: [
-                'Sneaker',
-                'Boost',
-                'Hiking',
-                'Running',
-                'Golf',
-                'Basket',
-                'Cycling'
+                'Sponge',
+                'Butter',
+                'Chiffon',
+                'Cotton',
+                'Red Velvet',
+                'Pound',
+                'Genoise'
             ],
             productName: '',
             choosedCategory: '',
@@ -146,6 +146,37 @@ class AddProduct extends Component {
                 this[`image${x}`].current.value = "";
             }
         });
+    }
+
+    renderLeftForm = () => {
+        return (
+            <div className={styles.formLeftSide}>
+                <div className={styles.leftSideCard}>
+                    <h2 className={styles.inputTitle}>Name</h2>
+                    <p className={styles.describer}>Give your fancy prodcut name. e.g: Rainbow Cake</p>
+                    {this.renderProductNameInput()}
+                    <h2 className={styles.inputTitle}>Category</h2>
+                    <p className={styles.describer}>What category your product is?</p>
+                    {this.renderInputSelect()}
+                    <h2 className={styles.inputTitle}>Price</h2>
+                    <p className={styles.describer}>Give your best price for its value</p>
+                    {this.renderPriceInput()}
+                    {this.renderDiscountOption()}
+                </div>
+            </div>
+        );
+    }
+
+    renderRightForm = () => {
+        return (
+            <div className={styles.formRightSide}>
+                <div className={styles.rightSideCard}>
+                    <h2 className={styles.inputTitle}>Description</h2>
+                    <p className={styles.describer}>Give your best price for its value</p>
+                    {this.renderTextEditor()}
+                </div>
+            </div>
+        );
     }
 
     renderProductNameInput = () => {
@@ -394,23 +425,8 @@ class AddProduct extends Component {
                 <h3 className={styles.title}>Add New Product</h3>
                 <h2 className={styles.inputTitle}>Product Information</h2>
                 <div className={styles.formContainer}>
-                    <div className={styles.formLeftSide}>
-                        <div className={styles.leftSideCard}>
-                            <h2 className={styles.inputTitle}>Name</h2>
-                            {this.renderProductNameInput()}
-                            <h2 className={styles.inputTitle}>Category</h2>
-                            {this.renderInputSelect()}
-                            <h2 className={styles.inputTitle}>Price</h2>
-                            {this.renderPriceInput()}
-                            {this.renderDiscountOption()}
-                        </div>
-                    </div>
-                    <div className={styles.formRightSide}>
-                        <div className={styles.rightSideCard}>
-                            <h2 className={styles.inputTitle}>Description</h2>
-                            {this.renderTextEditor()}
-                        </div>
-                    </div>
+                    {this.renderLeftForm()}
+                    {this.renderRightForm()}
                 </div>
                 {this.renderUploadImages()}
             </div >

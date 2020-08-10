@@ -9,7 +9,7 @@
   font-family: "Nunito-ExtraLight";
   font-size: 1em;
   color: #568D99;
-  margin-bottom: 5px;
+  margin-bottom: 0.2em;
 }
 
 .formContainer {
@@ -17,6 +17,13 @@
   display: -ms-flexbox;
   display: flex;
   margin-top: 2vh;
+}
+
+.formContainer .describer {
+  font-family: "Nunito-Light";
+  color: #D9B493;
+  font-size: 0.7em;
+  margin-bottom: 0.4em;
 }
 
 .formContainer .formLeftSide {

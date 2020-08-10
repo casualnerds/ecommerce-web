@@ -12,12 +12,19 @@
     font-family: $extraLight;
     font-size: 1em;
     color: $scheme1;
-    margin-bottom: 5px;
+    margin-bottom: 0.2em;
 }
 
 .formContainer {
     display: flex;
     margin-top: 2vh;
+
+    .describer {
+        font-family: $light;
+        color: $scheme4;
+        font-size: 0.7em;
+        margin-bottom: 0.4em;
+    }
 
     .formLeftSide {
         flex: 1;
