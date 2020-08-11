@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import styles from './InputIcon.module.css';
+import { nominalSeparator } from '../../helpers/helpers';
 
 class InputIcon extends Component {
     render() {
@@ -9,7 +10,8 @@ class InputIcon extends Component {
             width,
             height,
             type,
-            price
+            value,
+            onChange
         } = this.props;
 
         return (
@@ -19,8 +21,8 @@ class InputIcon extends Component {
                 </div>
                 <input
                     type={type}
-                    min="0"
-                    value={price}
+                    onChange={onChange}
+                    value={value}
                     style={{
                         width,
                         height

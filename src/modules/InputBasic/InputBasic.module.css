@@ -1,7 +1,6 @@
 .inputBasic {
   height: 35px;
   width: 20vw;
-  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,6 +17,19 @@
           box-shadow: none;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.inputBasic::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.inputBasic::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
 }
 
 .inputBasic:focus {
@@ -25,5 +37,29 @@
   border: 2px solid #A5CDD6;
   -webkit-box-shadow: 0 0 10px rgba(165, 205, 214, 0.3);
           box-shadow: 0 0 10px rgba(165, 205, 214, 0.3);
+}
+
+.inputBasic::-webkit-input-placeholder {
+  font-family: "Nunito-Regular";
+  font-size: 15px;
+  color: #CCCCCC;
+}
+
+.inputBasic:-ms-input-placeholder {
+  font-family: "Nunito-Regular";
+  font-size: 15px;
+  color: #CCCCCC;
+}
+
+.inputBasic::-ms-input-placeholder {
+  font-family: "Nunito-Regular";
+  font-size: 15px;
+  color: #CCCCCC;
+}
+
+.inputBasic::placeholder {
+  font-family: "Nunito-Regular";
+  font-size: 15px;
+  color: #CCCCCC;
 }
 /*# sourceMappingURL=InputBasic.module.css.map */

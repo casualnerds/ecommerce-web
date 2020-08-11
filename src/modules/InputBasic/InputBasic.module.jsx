@@ -5,18 +5,27 @@ import styles from './InputBasic.module.css';
 
 class InputBasic extends Component {
     render() {
-        const { onChange, width, height, text } = this.props;
+        const {
+            onChange,
+            width,
+            height,
+            type,
+            placeholder,
+            value
+        } = this.props;
 
         return (
             <>
                 <input
                     className={styles.inputBasic}
-                    type={text}
+                    type={type}
                     onChange={onChange}
+                    value={value}
                     style={{
                         width,
                         height
                     }}
+                    placeholder={placeholder}
                 />
             </>
         );

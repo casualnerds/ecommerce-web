@@ -2,12 +2,22 @@ import React, { Component, createRef } from "react";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState } from 'draft-js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Lottie from 'react-lottie';
 
 import styles from "./AddProduct.module.css";
+import {
+    nominalSeparator,
+    isNumber,
+    removeSeparator,
+    removeZeroOnFront,
+    calculateDiscount
+} from '../../helpers/helpers';
 import { InputSelect } from '../../modules/InputSelect/InputSelect.module';
 import { InputBasic } from '../../modules/InputBasic/InputBasic.module';
 import { InputIcon } from '../../modules/InputIcon/InputIcon.module';
+import { InputSwitch } from '../../modules/InputSwitch/InputSwitch.module';
 import { TextEditor } from '../../modules/TextEditor/TextEditor.module';
+import { checkAnimation } from '../../themes/lottieAnimations';
 
 class AddProduct extends Component {
     constructor(props) {
@@ -18,21 +28,32 @@ class AddProduct extends Component {
         this.image3 = createRef();
         this.state = {
             categories: [
-                'Sneaker',
-                'Boost',
-                'Hiking',
-                'Running',
-                'Golf',
-                'Basket',
-                'Cycling'
+                'Sponge',
+                'Butter',
+                'Chiffon',
+                'Cotton',
+                'Red Velvet',
+                'Pound',
+                'Genoise'
+            ],
+            smallImagesCount: [1, 2, 3],
+            dimensionCount: [
+                { name: 'width', code: 'W' },
+                { name: 'length', code: 'L' },
+                { name: 'height', code: 'H' }
             ],
             productName: '',
             choosedCategory: '',
             price: 0,
+            formattedPrice: '0',
+            discount: 0,
+            netPrice: 0,
             isDiscount: false,
-            smallImages: [1, 2, 3],
             editorState: EditorState.createEmpty(),
             uploadedImages: [],
+            isReadyStock: false,
+            stock: 1,
+            isPublished: true,
             uploadError: '',
             dropDepth: 0
         };
@@ -50,8 +71,37 @@ class AddProduct extends Component {
         this.setState({ productName });
     }
 
-    onChangePriceInput = (price) => {
-        this.setState({ price });
+    onChangePriceInput = (e) => {
+        const { discount } = this.state;
+        const value = e.target.value;
+        if (isNumber(value)) {
+            const removeZero = removeZeroOnFront(value);
+            const separated = nominalSeparator(removeZero);
+            this.setState({
+                price: removeZero ? parseInt(removeSeparator(removeZero)) : 0,
+                formattedPrice: removeZero ? separated : '0',
+                netPrice: value ? calculateDiscount(parseInt(removeSeparator(removeZero)), discount) : 0
+            });
+        }
+    }
+
+    onChangeDiscount = e => {
+        const { price } = this.state;
+        const value = e.target.value;
+
+        if (isNumber(value)) {
+            if (value <= 100) {
+                this.setState({
+                    discount: value ? parseInt(value) : 0,
+                    netPrice: value ? calculateDiscount(price, value) : price
+                });
+            } else {
+                this.setState({
+                    discount: value ? 100 : 0,
+                    netPrice: value ? calculateDiscount(price, 100) : price
+                });
+            }
+        }
     }
 
     onClickDiscount = () => {
@@ -114,17 +164,58 @@ class AddProduct extends Component {
         const { uploadedImages } = this.state;
         const newArray = [...uploadedImages];
 
-        this.setState({ dropDepth: 0 });
+        this.setState({ dropDepth: 0, uploadError: '' });
         const filesObject = e.dataTransfer.files;
         const filesArray = Object.keys(filesObject);
         filesArray.forEach(key => {
-            if (newArray.length < 4) {
-                newArray.push(URL.createObjectURL(filesObject[key]));
+            const isImageFormat = filesObject[key].type.split("/")[0] === "image";
+            if ((newArray.length < 4)) {
+                if (isImageFormat) {
+                    newArray.push(URL.createObjectURL(filesObject[key]));
+                } else {
+                    this.setState({
+                        uploadError: 'Only allow image file type.'
+                    });
+                }
             }
         });
         this.setState({
             uploadedImages: newArray
         });
+    }
+
+    onClickSwitchStock = () => {
+        this.setState(prev => ({ isReadyStock: !prev.isReadyStock }));
+    }
+
+    onChangeStock = (e) => {
+        const value = e.target.value;
+
+        if (isNumber(value)) {
+            this.setState({
+                stock: value ? parseInt(value) : 1
+            });
+        }
+    }
+
+    onClickLever = (operator) => () => {
+        const { stock } = this.state;
+        switch (operator) {
+            case '-':
+                if (stock > 1) {
+                    this.setState(prev => ({ stock: prev.stock - 1 }));
+                }
+                break;
+            case '+':
+                this.setState(prev => ({ stock: prev.stock + 1 }));
+                break;
+            default:
+                break;
+        }
+    }
+
+    onClickSwitchPublish = () => {
+        this.setState(prev => ({ isPublished: !prev.isPublished }));
     }
 
     deleteImage = i => () => {
@@ -139,14 +230,46 @@ class AddProduct extends Component {
         });
     }
 
+    renderLeftForm = () => {
+        return (
+            <div className={styles.formLeftSide}>
+                <div className={styles.leftSideCard}>
+                    <h2 className={styles.inputTitle}>Name</h2>
+                    <p className={styles.describer}>Give your fancy prodcut name. e.g: Rainbow Cake</p>
+                    {this.renderProductNameInput()}
+                    <h2 className={styles.inputTitle}>Category</h2>
+                    <p className={styles.describer}>What category your product is?</p>
+                    {this.renderInputSelect()}
+                    <h2 className={styles.inputTitle}>Price</h2>
+                    <p className={styles.describer}>Give your best price for its value</p>
+                    {this.renderPriceInput()}
+                    {this.renderDiscountOption()}
+                </div>
+            </div>
+        );
+    }
+
+    renderRightForm = () => {
+        return (
+            <div className={styles.formRightSide}>
+                <div className={styles.rightSideCard}>
+                    <h2 className={styles.inputTitle}>Description</h2>
+                    <p className={styles.describer}>Describe your product in details for consumers to know what you offered</p>
+                    {this.renderTextEditor()}
+                </div>
+            </div>
+        );
+    }
+
     renderProductNameInput = () => {
         return (
-            <InputBasic
-                type="text"
-                onChange={this.onChangeProductName}
-            // width={500} // optional
-            // height={40}  // optional
-            />
+            <div className={styles.inputName}>
+                <InputBasic
+                    type="text"
+                    onChange={this.onChangeProductName}
+                    placeholder="e.g. Rainbow Cake"
+                />
+            </div>
         );
     }
 
@@ -166,14 +289,12 @@ class AddProduct extends Component {
     }
 
     renderPriceInput = () => {
-        const { price } = this.state;
+        const { formattedPrice } = this.state;
         return (
             <InputIcon
-                type="number"
+                type="text"
                 onChange={this.onChangePriceInput}
-                value={price}
-            // width={400} // (optional)
-            // height={30} // (optional)
+                value={formattedPrice}
             >
                 <p className={styles.priceIcon}>Rp</p>
             </InputIcon>
@@ -191,7 +312,7 @@ class AddProduct extends Component {
     }
 
     renderDiscountOption = () => {
-        const { isDiscount } = this.state;
+        const { isDiscount, discount, netPrice } = this.state;
         return (
             <div>
                 <div className={styles.checkDiscountWrapper}>
@@ -205,9 +326,10 @@ class AddProduct extends Component {
                 {
                     isDiscount ? (
                         <div className={styles.discountInputContainer}>
-                            <InputIcon width="5vw" type="number">
+                            <InputIcon width="5vw" type="text" onChange={this.onChangeDiscount} value={discount}>
                                 <FontAwesomeIcon icon="percent" className={styles.percentageIcon} />
                             </InputIcon>
+                            <p className={styles.netPrice}>Net Price: <span>Rp {nominalSeparator(netPrice)}, -</span></p>
                         </div>
                     ) : null
                 }
@@ -221,10 +343,30 @@ class AddProduct extends Component {
             <div className={styles.uploadImageContainer}>
                 <h2 className={styles.inputTitle}>Upload Images</h2>
                 <p className={styles.uploadError}>{uploadError}</p>
-                <div className={styles.imagesContainer}>
-                    {this.renderMainImage()}
-                    {this.renderOtherImages()}
-                    {this.renderDndArea()}
+                <div className={styles.uploadAndDescWrapper}>
+                    <div className={styles.imagesContainer}>
+                        {this.renderMainImage()}
+                        {this.renderOtherImages()}
+                        {this.renderDndArea()}
+                    </div>
+                    {this.renderTipsContainer()}
+                </div>
+            </div>
+        );
+    }
+
+    renderTipsContainer = () => {
+        return (
+            <div className={styles.tipsContainer}>
+                <div>
+                    <FontAwesomeIcon icon="info-circle" className={styles.infoIcon} />
+                </div>
+                <div>
+                    <h5 className={styles.tipsTitle}>Images Recommendation:</h5>
+                    <p><span>1.</span> Use at least 500x500 px image resolution</p>
+                    <p><span>2.</span> Upload images at difference angles to give your consumer perspective</p>
+                    <p><span>3.</span> Use attractive images to attract your consumers</p>
+                    <p><span>4.</span> Maximize the image up to 4 files</p>
                 </div>
             </div>
         );
@@ -273,14 +415,14 @@ class AddProduct extends Component {
     }
 
     renderOtherImages = () => {
-        const { smallImages, uploadedImages } = this.state;
+        const { smallImagesCount, uploadedImages } = this.state;
         return (
             <div className={styles.smallImagesContainer}>
                 {
-                    smallImages.map((image, i) => (
+                    smallImagesCount.map((_, i) => (
                         <div
                             key={i}
-                            className={styles.smallImage}
+                            className={`${styles.smallImage} ${uploadedImages[i + 1] ? styles.smallImageExist : null}`}
                             style={{
                                 backgroundImage: uploadedImages[i + 1] ? `url(${uploadedImages[i + 1]})` : null,
                                 backgroundSize: "contain",
@@ -317,45 +459,175 @@ class AddProduct extends Component {
     }
 
     renderDndArea = () => {
-        const { dropDepth } = this.state;
+        const { dropDepth, uploadedImages } = this.state;
         return (
-            <div
-                className={styles.dndAreaContainer}
-                onDragEnter={this.onDragEnterFiles}
-                onDragLeave={this.onDragLeaveFiles}
-                onDragOver={this.onDragOverFiles}
-                onDrop={this.onDropFiles}
-            >
-                <div className={`${styles.dndMessageBox} ${dropDepth > 0 ? styles.dndMessageBoxExpand : null}`}>
-                    <FontAwesomeIcon icon="upload" className={styles.uploadDragIcon} />
-                    <p>or Drop</p>
-                    <p>your multiple images here</p>
+            <>
+                {
+                    uploadedImages.length === 4 ? (
+                        this.renderCheckAnimation()
+                    ) : (
+                            <div
+                                className={styles.dndAreaContainer}
+                                onDragEnter={this.onDragEnterFiles}
+                                onDragLeave={this.onDragLeaveFiles}
+                                onDragOver={this.onDragOverFiles}
+                                onDrop={this.onDropFiles}
+                            >
+                                <div className={`${styles.dndMessageBox} ${dropDepth > 0 ? styles.dndMessageBoxExpand : null}`}>
+                                    <FontAwesomeIcon icon="upload" className={styles.uploadDragIcon} />
+                                    <p>or Drop</p>
+                                    <p>your multiple images here</p>
+                                </div>
+                            </div>
+                        )
+                }
+            </>
+        );
+    }
+
+    renderCheckAnimation = () => {
+        const options = {
+            loop: false,
+            autoplay: true,
+            animationData: checkAnimation,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+
+        return (
+            <div className={styles.checkAnimationContainer}>
+                <Lottie
+                    options={options}
+                    height={'4vw'}
+                    width={'4vw'}
+                />
+                <p className={styles.completeUpload}>Yeay! your product images are complete.</p>
+            </div>
+        );
+    }
+
+    renderAddDimension = () => {
+        const { dimensionCount } = this.state;
+        return (
+            <div className={styles.addDimensionContainer}>
+                <h2 className={styles.inputTitle}>The Cake's Dimension</h2>
+                <p>Add your cake dimension in centimeter (e.g. 20x20x10)</p>
+                <div className={styles.dimensionContainer}>
+                    {
+                        dimensionCount.map(dimension => (
+                            <div className={styles.rowWrapper}>
+                                <div>
+                                    <p>{dimension.name} <span>({dimension.code})</span></p>
+                                </div>
+                                <p>:</p>
+                                <div className={styles.input}>
+                                    <InputBasic width="4.5vw" />
+                                </div>
+                                <p className={styles.cm}>cm</p>
+                            </div>
+                        ))
+                    }
                 </div>
             </div>
         );
     }
 
-    // TODO ONLY UPLOAD IMAGES
+    renderStock = () => {
+        const { stock, isReadyStock } = this.state;
+        return (
+            <div className={styles.productPublishingContainer}>
+                <h2 className={styles.inputTitle}>Product Stock</h2>
+                <div className={styles.subInputTitleWrapper}>
+                    <p className={styles.subInputTitle}>Is your product ready stock?</p>
+                    <p className={styles.subInputTitle}>If you disable this switch, it means your products aren't ready, consumer need to pre-order your product.</p>
+                </div>
+                {this.renderSwitch('STOCK')}
+                {
+                    isReadyStock && (
+                        <div className={styles.gaugeContainer}>
+                            <div onClick={this.onClickLever('-')}>
+                                <FontAwesomeIcon icon="minus" />
+                            </div>
+                            <div>
+                                <InputBasic
+                                    width="4vw"
+                                    onChange={this.onChangeStock}
+                                    type="number"
+                                    value={stock}
+                                />
+                            </div>
+                            <div onClick={this.onClickLever('+')}>
+                                <FontAwesomeIcon icon="plus" />
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
+        );
+    }
+
+    renderProductPublishing = () => {
+        return (
+            <div className={styles.productPublishingContainer}>
+                <h2 className={styles.inputTitle}>Product Publishing</h2>
+                <div className={styles.subInputTitleWrapper}>
+                    <p className={styles.subInputTitle}>Do you want to publish your new product right now?</p>
+                    <p className={styles.subInputTitle}>If you disable this switch you can still switch it on Edit Product.</p>
+                </div>
+                {this.renderSwitch('PUBLISHING')}
+            </div>
+        );
+    }
+
+    renderSwitch = (cases) => {
+        const { isPublished, isReadyStock } = this.state;
+
+        switch (cases) {
+            case 'STOCK':
+                return (
+                    <InputSwitch
+                        switchValue={isReadyStock}
+                        onClick={this.onClickSwitchStock}
+                    />
+                );
+            case 'PUBLISHING':
+                return (
+                    <InputSwitch
+                        switchValue={isPublished}
+                        onClick={this.onClickSwitchPublish}
+                    />
+                );
+            default:
+                break;
+        }
+    }
+
+    renderAddProductButton = () => {
+        return (
+            <div className={styles.addProductButtonContainer}>
+                <p>Please check all the required input form above before click the <span>Add product</span> button below.</p>
+                <div className={styles.addProductButton}>
+                    <p>Add Product</p>
+                </div>
+            </div>
+        );
+    }
+
     render() {
         return (
             <div>
                 <h3 className={styles.title}>Add New Product</h3>
+                <h2 className={styles.inputTitle}>Product Information</h2>
                 <div className={styles.formContainer}>
-                    <div className={styles.formLeftSide}>
-                        <h2 className={styles.inputTitle}>Product's Name</h2>
-                        {this.renderProductNameInput()}
-                        <h2 className={styles.inputTitle}>Category</h2>
-                        {this.renderInputSelect()}
-                        <h2 className={styles.inputTitle}>Price</h2>
-                        {this.renderPriceInput()}
-                        {this.renderDiscountOption()}
-                    </div>
-                    <div className={styles.formRightSide}>
-                        <h2 className={styles.inputTitle}>Description</h2>
-                        {this.renderTextEditor()}
-                    </div>
+                    {this.renderLeftForm()}
+                    {this.renderRightForm()}
                 </div>
                 {this.renderUploadImages()}
+                {this.renderAddDimension()}
+                {this.renderStock()}
+                {this.renderProductPublishing()}
+                {this.renderAddProductButton()}
             </div >
         );
     }

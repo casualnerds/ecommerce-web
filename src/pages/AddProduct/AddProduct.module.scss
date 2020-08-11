@@ -12,16 +12,46 @@
     font-family: $extraLight;
     font-size: 1em;
     color: $scheme1;
-    margin-bottom: 5px;
+    margin-bottom: 0.2em;
+    user-select: none;
+}
+
+.subInputTitleWrapper {
+    margin: 1vh 0;
+}
+
+.subInputTitle {
+    font-family: $extraLight;
+    font-size: 0.9em;
+    color: $scheme1;
+    user-select: none;
 }
 
 .formContainer {
     display: flex;
-    border-bottom: 1px dashed $scheme5;
+    margin-top: 2vh;
+
+    .describer {
+        font-family: $light;
+        color: $scheme4;
+        font-size: 0.7em;
+        margin-bottom: 0.4em;
+    }
 
     .formLeftSide {
         flex: 1;
-        border-right: 1px dashed $scheme5;
+
+        .inputName {
+            margin-bottom: 1vw;
+        }
+
+        .leftSideCard {
+            background-color: $white;
+            box-shadow: 0 0 10px $boxShadow2;
+            height: 100%;
+            padding: 1vw 2vw;
+            border-radius: 7px;
+        }
 
         .priceIcon {
             font-family: $bold;
@@ -31,8 +61,16 @@
 
     .formRightSide {
         flex: 2;
-        padding-left: 100px;
-        padding-bottom: 50px;
+        padding: 0 2vw;
+        
+        .rightSideCard {
+            height: 100%;
+            background-color: $white;
+            box-shadow: 0 0 10px $boxShadow2;
+            padding: 1vw 2vw;
+            padding-bottom: 5vh;
+            border-radius: 7px;
+        }
     }
 }
 
@@ -64,41 +102,51 @@
 
 .discountInputContainer {
     animation: fadeIn 0.2s ease-in;
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }        
-    }
+    display: flex;
+    align-items: center;
 
     .percentageIcon {
         font-size: 15px;
         color: $dustyGray;
     }
+
+    .netPrice {
+        font-family: $semiBold;
+        margin-left: 1vw;
+        color: $silver;
+
+        span {
+            color: $dustyGray;
+        }
+    }
 }
 
 .uploadImageContainer {
-    padding-top: 20px;
+    padding-top: 2vh;
+    padding-right: 2vw;
+    margin-bottom: 3vh;
 
     .uploadError {
         font-family: $light;
         font-size: 13px;
         color: $burntSienna;
     }
+
+    .uploadAndDescWrapper {
+        margin: 2vh 0;
+        display: flex;
+    }
     
     .imagesContainer {
         display: flex;
         align-items: center;
-        margin: 20px 0;
         padding: 2vw 2vw;
         width: 50vw;
         height: 20vw;
         background-color: $white;
         border-radius: 8px;
         box-shadow: 0 0 10px $boxShadow2;
+        margin-right: 1vw;
 
         .mainImage {
             display: flex;
@@ -197,6 +245,14 @@
                 }
             }
 
+            .smallImageExist {
+                border: 2px solid $scheme2;
+    
+                &:hover {
+                    border: 2px solid $scheme2;
+                }
+            }
+
             .smallImagePointer {
                 cursor: pointer;   
             }
@@ -253,5 +309,206 @@
             text-indent: -999em;
             cursor: pointer;
         }
+
+        .checkAnimationContainer {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .completeUpload {
+                font-family: $semiBold;
+                font-size: 17px;
+                color: $scheme2;
+                margin-top: 1vw;
+            }
+        }
     }
+
+    .tipsContainer {
+        display: flex;
+        padding: 2vh 0.8vw;
+        background-color: $scheme5;
+        border-radius: 9px;
+        padding-left: 3vw;
+        border-left: 0.4vw solid $scheme3;
+        min-width: 20vw;
+        height: 100%;
+        clip-path: circle(5% at 1.98vw 1.6vw);
+        transition: all 0.5s ease-in;
+        cursor: pointer;
+        position: relative;
+
+        &:hover {
+            clip-path: circle(100%);
+        }
+
+        .infoIcon {
+            color: $scheme3;
+            font-size: 1.2vw;
+            position: absolute;
+            top: 1vw;
+            left: 1vw;
+        }
+
+        .tipsTitle {
+            font-family: $bold;
+            color: $dustyGray;
+            margin-top: 0.4vh;
+            margin-bottom: 1vh;
+            color: $scheme3;
+        }
+
+        p {
+            font-family: $light;
+            font-size: 0.7vw;
+            color: $scheme3;
+            margin-bottom: 0.3vh;
+        }
+
+        span {
+            font-family: $bold;
+        }
+    }
+}
+
+.productPublishingContainer {
+    margin-bottom: 2vh;
+
+    .gaugeContainer {
+        display: flex;
+        align-items: center;
+        margin-top: 1vw;
+        animation: fadeIn 0.2s ease-in;
+
+        div {
+            &:nth-child(1), &:nth-child(3) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.8vw;
+                height: 1.8vw;
+                border-radius: 0.3vw;
+                border: 0.1vw solid $white;
+                box-shadow: 0 1px 5px $boxShadow;
+                background-color: $scheme1;
+                color: $white;
+                font-size: 0.7vw;
+                cursor: pointer;
+            }
+
+            &:nth-child(2) {
+                margin: 0 1vw;
+            }
+        }
+    }
+}
+
+.addDimensionContainer {
+    margin-bottom: 2vh;
+
+    p {
+        font-family: $extraLight;
+        font-size: 0.7vw;
+        color: $scheme4;
+    }
+
+    .dimensionContainer {
+        padding: 0.8vw 1vw;
+        background-color: $white;
+        box-shadow: 0 0 10px $boxShadow2;
+        border-radius: 7px;
+        margin-top: 1vw;
+        width: 20vw;
+
+        .rowWrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5vw;
+
+            p {
+                font-family: $semiBold;
+                font-size: 0.8vw;
+                color: $scheme1;
+            }
+
+            
+            div:nth-child(1) {
+                flex: 4;
+                margin-right: 0.8vw;
+            }
+            
+            p:nth-child(2) {
+                flex: 1;
+                margin-right: 0.8vw;
+            }
+
+            .input {
+                flex: 5;
+                margin-right: 0.8vw;
+            }
+
+            .cm {
+                flex: 6;
+            }
+        }
+    }
+}
+
+.addProductButtonContainer {
+    margin: 2vw 0;
+
+    p {
+        font-family: $extraLight;
+        color: $scheme1;
+        font-size: 0.7vw;
+
+        span {
+            font-family: $regular;
+        }
+    }
+
+    .addProductButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 8vw;
+        height: 2.5vw;
+        border-radius: 7px;
+        background-color: $scheme1;
+        box-shadow: 0 3px 5px $boxShadow;
+        cursor: pointer;
+        position: relative;
+        top: 0;
+        transition: all 0.1s ease-in;
+        margin-top: 0.7vw;
+
+        &:hover {
+            top: -5px;
+            box-shadow: 0 8px 8px $boxShadow2;
+        }
+
+        &:active {
+            top: 0;
+            box-shadow: 0 3px 5px $boxShadow;
+            width: 8.2vw;
+        }
+
+        p {
+            font-family: $bold;
+            color: $white;
+            font-size: 0.8vw;
+            user-select: none;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }        
 }
