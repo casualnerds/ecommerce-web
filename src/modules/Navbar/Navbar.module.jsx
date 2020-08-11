@@ -11,9 +11,8 @@ class Navbar extends Component {
             <div className={styles.upperNavbarContainer}>
                 <FontAwesomeIcon
                     icon="bars"
-                    color="white"
-                    size="2x"
-                    onClick={onClickMenuSidebar} className={`${styles.menuIcon} ${isSidebarCollapsed ? styles.menuIconExpand : null}`}
+                    onClick={onClickMenuSidebar}
+                    className={`${styles.menuIcon} ${isSidebarCollapsed ? styles.menuIconExpand : null}`}
                 />
             </div>
         );

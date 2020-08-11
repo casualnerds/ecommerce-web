@@ -13,6 +13,7 @@
     font-size: 1em;
     color: $scheme1;
     margin-bottom: 0.2em;
+    user-select: none;
 }
 
 .subInputTitleWrapper {
@@ -22,7 +23,8 @@
 .subInputTitle {
     font-family: $extraLight;
     font-size: 0.9em;
-    color: $scheme3;
+    color: $scheme1;
+    user-select: none;
 }
 
 .formContainer {
@@ -102,15 +104,6 @@
     animation: fadeIn 0.2s ease-in;
     display: flex;
     align-items: center;
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }        
-    }
 
     .percentageIcon {
         font-size: 15px;
@@ -382,6 +375,34 @@
 
 .productPublishingContainer {
     margin-bottom: 2vh;
+
+    .gaugeContainer {
+        display: flex;
+        align-items: center;
+        margin-top: 1vw;
+        animation: fadeIn 0.2s ease-in;
+
+        div {
+            &:nth-child(1), &:nth-child(3) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 1.8vw;
+                height: 1.8vw;
+                border-radius: 0.3vw;
+                border: 0.1vw solid $white;
+                box-shadow: 0 1px 5px $boxShadow;
+                background-color: $scheme1;
+                color: $white;
+                font-size: 0.7vw;
+                cursor: pointer;
+            }
+
+            &:nth-child(2) {
+                margin: 0 1vw;
+            }
+        }
+    }
 }
 
 .addDimensionContainer {
@@ -481,4 +502,13 @@
             user-select: none;
         }
     }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }        
 }

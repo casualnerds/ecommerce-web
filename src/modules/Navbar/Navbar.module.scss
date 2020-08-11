@@ -8,12 +8,14 @@
     box-shadow: 0 5px 20px 5px $boxShadow;
     position: fixed;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 1vw;
     z-index: 100;
 }
 
 .menuIcon {
     cursor: pointer;
+    color: $white;
+    font-size: 1.4vw;
 
     transition: transform 0.2s ease-in;
 }

@@ -7,6 +7,7 @@ import {
     faPercent,
     faImage,
     faPlus,
+    faMinus,
     faTimesCircle,
     faUpload,
     faImages,
@@ -26,5 +27,6 @@ library.add(
     faTimesCircle,
     faUpload,
     faImages,
-    faInfoCircle
+    faInfoCircle,
+    faMinus
 );

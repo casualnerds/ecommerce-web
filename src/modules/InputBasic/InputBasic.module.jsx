@@ -9,16 +9,18 @@ class InputBasic extends Component {
             onChange,
             width,
             height,
-            text,
-            placeholder
+            type,
+            placeholder,
+            value
         } = this.props;
 
         return (
             <>
                 <input
                     className={styles.inputBasic}
-                    type={text}
+                    type={type}
                     onChange={onChange}
+                    value={value}
                     style={{
                         width,
                         height

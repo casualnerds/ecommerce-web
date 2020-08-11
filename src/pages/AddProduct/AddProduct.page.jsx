@@ -51,6 +51,8 @@ class AddProduct extends Component {
             isDiscount: false,
             editorState: EditorState.createEmpty(),
             uploadedImages: [],
+            isReadyStock: false,
+            stock: 1,
             isPublished: true,
             uploadError: '',
             dropDepth: 0
@@ -180,6 +182,36 @@ class AddProduct extends Component {
         this.setState({
             uploadedImages: newArray
         });
+    }
+
+    onClickSwitchStock = () => {
+        this.setState(prev => ({ isReadyStock: !prev.isReadyStock }));
+    }
+
+    onChangeStock = (e) => {
+        const value = e.target.value;
+
+        if (isNumber(value)) {
+            this.setState({
+                stock: value ? parseInt(value) : 1
+            });
+        }
+    }
+
+    onClickLever = (operator) => () => {
+        const { stock } = this.state;
+        switch (operator) {
+            case '-':
+                if (stock > 1) {
+                    this.setState(prev => ({ stock: prev.stock - 1 }));
+                }
+                break;
+            case '+':
+                this.setState(prev => ({ stock: prev.stock + 1 }));
+                break;
+            default:
+                break;
+        }
     }
 
     onClickSwitchPublish = () => {
@@ -501,6 +533,40 @@ class AddProduct extends Component {
         );
     }
 
+    renderStock = () => {
+        const { stock, isReadyStock } = this.state;
+        return (
+            <div className={styles.productPublishingContainer}>
+                <h2 className={styles.inputTitle}>Product Stock</h2>
+                <div className={styles.subInputTitleWrapper}>
+                    <p className={styles.subInputTitle}>Is your product ready stock?</p>
+                    <p className={styles.subInputTitle}>If you disable this switch, it means your products aren't ready, consumer need to pre-order your product.</p>
+                </div>
+                {this.renderSwitch('STOCK')}
+                {
+                    isReadyStock && (
+                        <div className={styles.gaugeContainer}>
+                            <div onClick={this.onClickLever('-')}>
+                                <FontAwesomeIcon icon="minus" />
+                            </div>
+                            <div>
+                                <InputBasic
+                                    width="4vw"
+                                    onChange={this.onChangeStock}
+                                    type="number"
+                                    value={stock}
+                                />
+                            </div>
+                            <div onClick={this.onClickLever('+')}>
+                                <FontAwesomeIcon icon="plus" />
+                            </div>
+                        </div>
+                    )
+                }
+            </div>
+        );
+    }
+
     renderProductPublishing = () => {
         return (
             <div className={styles.productPublishingContainer}>
@@ -509,20 +575,32 @@ class AddProduct extends Component {
                     <p className={styles.subInputTitle}>Do you want to publish your new product right now?</p>
                     <p className={styles.subInputTitle}>If you disable this switch you can still switch it on Edit Product.</p>
                 </div>
-                {this.renderSwitch()}
+                {this.renderSwitch('PUBLISHING')}
             </div>
         );
     }
 
-    renderSwitch = () => {
-        const { isPublished } = this.state;
+    renderSwitch = (cases) => {
+        const { isPublished, isReadyStock } = this.state;
 
-        return (
-            <InputSwitch
-                switchValue={isPublished}
-                onClick={this.onClickSwitchPublish}
-            />
-        );
+        switch (cases) {
+            case 'STOCK':
+                return (
+                    <InputSwitch
+                        switchValue={isReadyStock}
+                        onClick={this.onClickSwitchStock}
+                    />
+                );
+            case 'PUBLISHING':
+                return (
+                    <InputSwitch
+                        switchValue={isPublished}
+                        onClick={this.onClickSwitchPublish}
+                    />
+                );
+            default:
+                break;
+        }
     }
 
     renderAddProductButton = () => {
@@ -547,6 +625,7 @@ class AddProduct extends Component {
                 </div>
                 {this.renderUploadImages()}
                 {this.renderAddDimension()}
+                {this.renderStock()}
                 {this.renderProductPublishing()}
                 {this.renderAddProductButton()}
             </div >

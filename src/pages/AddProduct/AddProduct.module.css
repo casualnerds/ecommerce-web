@@ -10,6 +10,10 @@
   font-size: 1em;
   color: #568D99;
   margin-bottom: 0.2em;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .subInputTitleWrapper {
@@ -19,7 +23,11 @@
 .subInputTitle {
   font-family: "Nunito-ExtraLight";
   font-size: 0.9em;
-  color: #8C4A11;
+  color: #568D99;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .formContainer {
@@ -123,24 +131,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .discountInputContainer .percentageIcon {
@@ -476,6 +466,44 @@
   margin-bottom: 2vh;
 }
 
+.productPublishingContainer .gaugeContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1vw;
+  -webkit-animation: fadeIn 0.2s ease-in;
+          animation: fadeIn 0.2s ease-in;
+}
+
+.productPublishingContainer .gaugeContainer div:nth-child(1), .productPublishingContainer .gaugeContainer div:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1.8vw;
+  height: 1.8vw;
+  border-radius: 0.3vw;
+  border: 0.1vw solid white;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.17);
+          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.17);
+  background-color: #568D99;
+  color: white;
+  font-size: 0.7vw;
+  cursor: pointer;
+}
+
+.productPublishingContainer .gaugeContainer div:nth-child(2) {
+  margin: 0 1vw;
+}
+
 .addDimensionContainer {
   margin-bottom: 2vh;
 }
@@ -598,5 +626,23 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=AddProduct.module.css.map */
