@@ -1,4 +1,5 @@
 @import '../../themes/colors';
+@import '../../themes/fontType';
 
 .sideBarContainer {
     position: fixed;
@@ -6,8 +7,75 @@
     width: 15vw;
     height: 100vh;
     transition: width 0.2s ease-in;
+    padding-top: 2vw;
 }
 
 .sideBarContainerCollapse {
     width: 4vw;
+}
+
+.menuCard {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: $scheme5;
+    width: 10vw;
+    height: 2.6vw;
+    padding-left: 1vw;
+    padding-right: 0.3vw;
+    border-radius: 0 2vw 2vw 0;
+    margin-bottom: 0.5vw;
+    position: relative;
+    left: 0;
+    transition: all 0.2s ease-in;
+
+    &:hover {
+        width: 10.5vw;
+    }
+
+    .iconContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2vw;
+        height: 2vw;
+        border-radius: 1.1vw;
+        background-color: $scheme4;
+    }
+
+    .menuIcon {
+        font-size: 1vw;
+        color: $scheme3;
+    }
+
+    .menuName {
+        position: absolute;
+        font-family: $bold;
+        font-size: 0.7vw;
+        color: $scheme3;
+        left: 1vw;
+        transform: scaleX(1);
+        transform-origin: left;
+        opacity: 1;
+        transition: all 0.1s ease-in;
+
+    }
+
+    .menuNameCollapse {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+}
+
+.menuCardCollapse {
+    width: 2.6vw;
+    padding-left: 0.3vw;
+    border-radius: 2vw;
+    left: 0.7vw;
+    
+    &:hover {
+        width: 2.6vw;
+        background-color: $scheme3;
+    }
 }

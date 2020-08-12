@@ -11,7 +11,11 @@ import {
     faTimesCircle,
     faUpload,
     faImages,
-    faInfoCircle
+    faInfoCircle,
+    faHome,
+    faSignal,
+    faMoneyBillWaveAlt,
+    faExclamationCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -28,5 +32,9 @@ library.add(
     faUpload,
     faImages,
     faInfoCircle,
-    faMinus
+    faMinus,
+    faHome,
+    faSignal,
+    faMoneyBillWaveAlt,
+    faExclamationCircle
 );
