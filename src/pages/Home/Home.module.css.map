@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,cAAc,CAAC;EACX,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CACzB",
+    "mappings": "AAGA,AAAA,cAAc,CAAC;EACX,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;CAgBzB;;AAlBD,AAII,cAJU,CAIV,UAAU,CAAC;EACP,WAAW,EEFR,iBAAiB;EFGpB,KAAK,ECIL,OAAO;EDHP,SAAS,EAAE,GAAG;EACd,aAAa,EAAE,GAAG;CACrB;;AATL,AAWI,cAXU,CAWV,aAAa,CAAC;EACV,WAAW,EEfT,gBAAgB;EFgBlB,SAAS,EAAE,GAAG;EACd,KAAK,ECjBJ,OAAO;EDkBR,aAAa,EAAE,GAAG;CACrB",
     "sources": [
-        "Home.module.scss"
+        "Home.module.scss",
+        "../../themes/_colors.scss",
+        "../../themes/_fontType.scss"
     ],
     "names": [],
     "file": "Home.module.css"

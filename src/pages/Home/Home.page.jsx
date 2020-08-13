@@ -6,39 +6,8 @@ class Home extends Component {
     render() {
         return (
             <div className={styles.homeContainer}>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
-                <h2>THIS IS HOME</h2>
+                <p className={styles.pageTitle}>Dashboard</p>
+                <p className={styles.sectionTitle}>Overview</p>
             </div>
         );
     }

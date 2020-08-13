@@ -23,8 +23,8 @@ class SidebarLeft extends Component {
         return (
             <div>
                 {
-                    menus.map(menu => (
-                        <div className={`${styles.menuCard} ${isSidebarCollapsed ? styles.menuCardCollapse : null}`}>
+                    menus.map((menu, i) => (
+                        <div key={i} className={`${styles.menuCard} ${isSidebarCollapsed ? styles.menuCardCollapse : null}`}>
                             <p className={`${styles.menuName} ${isSidebarCollapsed && styles.menuNameCollapse}`}>{menu.name}</p>
                             <div className={styles.iconContainer}>
                                 <FontAwesomeIcon icon={menu.icon} className={styles.menuIcon} />

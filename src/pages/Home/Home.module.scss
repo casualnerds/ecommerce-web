@@ -1,4 +1,22 @@
+@import '../../themes/colors';
+@import '../../themes/fontType';
+
 .homeContainer {
     display: flex;
     flex-direction: column;
+
+    .pageTitle {
+        font-family: $semiBold;
+        color: $silver;
+        font-size: 1vw;
+        margin-bottom: 1vw;
+    }
+
+    .sectionTitle {
+        font-family: $regular;
+        font-size: 1vw;
+        color: $scheme1;
+        margin-bottom: 1vw;
+    }
+
 }

@@ -515,8 +515,8 @@ class AddProduct extends Component {
                 <p>Add your cake dimension in centimeter (e.g. 20x20x10)</p>
                 <div className={styles.dimensionContainer}>
                     {
-                        dimensionCount.map(dimension => (
-                            <div className={styles.rowWrapper}>
+                        dimensionCount.map((dimension, i) => (
+                            <div key={i} className={styles.rowWrapper}>
                                 <div>
                                     <p>{dimension.name} <span>({dimension.code})</span></p>
                                 </div>

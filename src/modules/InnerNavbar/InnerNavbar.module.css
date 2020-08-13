@@ -11,7 +11,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.17);
+  border-bottom: 1px solid #dbdbdb;
   -webkit-transition: width 0.2s ease-in;
   transition: width 0.2s ease-in;
   z-index: 2;
@@ -28,16 +28,64 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: white;
   -webkit-box-shadow: 0 2px 10px 3px rgba(0, 0, 0, 0.05);
           box-shadow: 0 2px 10px 3px rgba(0, 0, 0, 0.05);
   padding: 0 30px;
+}
+
+.innerNavbar .menuBarSelected {
+  width: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.3vw 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  margin: 0 0.3vw;
+  border-radius: 3vw;
+  background-color: #A5CDD6;
+}
+
+.innerNavbar .menuBarSelected span {
+  color: white;
+  font-family: "Nunito-Bold";
+  font-size: 0.7vw;
+}
+
+.innerNavbar .menuBarUnselected {
+  width: 5vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.3vw 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  margin: 0 0.3vw;
+  border-radius: 3vw;
+  background-color: white;
+  border: 1px solid #A5CDD6;
+}
+
+.innerNavbar .menuBarUnselected span {
+  color: #A5CDD6;
+  font-family: "Nunito-SemiBold";
+  font-size: 0.7vw;
 }
 /*# sourceMappingURL=InnerNavbar.module.css.map */
