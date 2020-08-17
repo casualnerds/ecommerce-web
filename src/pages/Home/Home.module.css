@@ -7,4 +7,18 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
+
+.homeContainer .pageTitle {
+  font-family: "Nunito-SemiBold";
+  color: #CCCCCC;
+  font-size: 1vw;
+  margin-bottom: 1vw;
+}
+
+.homeContainer .sectionTitle {
+  font-family: "Nunito-Regular";
+  font-size: 1vw;
+  color: #568D99;
+  margin-bottom: 1vw;
+}
 /*# sourceMappingURL=Home.module.css.map */

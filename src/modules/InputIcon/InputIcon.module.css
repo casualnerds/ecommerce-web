@@ -2,6 +2,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 1vh 0;
 }
 
 .inputIconContainer .iconContainer {
@@ -32,7 +33,6 @@
 .inputIconContainer input {
   height: 35px;
   width: 17vw;
-  margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

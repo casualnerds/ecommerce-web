@@ -1,61 +1,43 @@
-.productListContainer ul {
-  position: absolute;
-  width: 78vw;
-  margin: 10px 0;
-  padding: 10px;
+.title {
+  font-family: "Nunito-Light";
+  color: #CCCCCC;
+  font-size: 17px;
+  margin-bottom: 20px;
 }
 
-.productListContainer ul li {
+.optionsContainer .productsContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.optionsContainer .productsContainer .productCardHeader {
+  margin: 0 2vw;
+  padding-right: 4vw;
+  font-family: "Nunito-ExtraLight";
+  font-size: 1em;
+  color: #568D99;
+}
+
+.optionsContainer .productsContainer .productCardItems {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   background-color: white;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  padding: 20px 20px;
-  color: black;
-  margin: 8px 0;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.productListContainer ul li span {
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.productListContainer ul li span:nth-child(1) {
-  width: 30px;
-}
-
-.productListContainer ul li span:nth-child(2) {
-  width: 200px;
-}
-
-.productListContainer ul li span:nth-child(3) {
-  width: 200px;
-}
-
-.productListContainer ul li span:nth-child(4) {
-  width: 200px;
-}
-
-.productListContainer ul li span:nth-child(5) {
-  width: 200px;
-}
-
-.productListContainer ul li span:nth-child(6) {
-  width: 200px;
-}
-
-.productListContainer ul li span:nth-child(7) {
-  width: 80px;
-}
-
-.productListContainer ul li:hover {
-  background-color: #CCCCCC;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 77vw;
+  height: 12vh;
+  border-radius: 7px;
+  margin: 0.3vw 0;
+  padding-top: 2vw;
+  padding-right: 4vw;
+  color: #8C4A11;
 }
 /*# sourceMappingURL=Product.module.css.map */

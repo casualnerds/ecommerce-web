@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 import styles from './Product.module.css';
@@ -7,81 +7,67 @@ import styles from './Product.module.css';
 
 class Product extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            headers: [
+                'No',
+                'Image',
+                'Name',
+                'Price',
+                'Comment',
+                'Username',
+                'Action'
+            ],
+            items: [
+                '1',
+                '2',
+                '3',
+                '4',
+                '5',
+                '6',
+                '...'
+            ]
+        };
+    }
+
     render() {
 
+        const { headers, items } = this.state;
+
         return (
+            <div>
+                <h3 className={styles.title}>Add New Product</h3>
+                {/* <h2 className={styles.inputTitle}>Product Information</h2> */}
+                <div className={styles.optionsContainer}>
 
-            <div className={styles.productListContainer}>
-                <ul>
-                    <li style={{ backgroundColor: '#2a302d', color: "white" }}>
-                        <span>No</span>
-                        <span>Image</span>
-                        <span>Name</span>
-                        <span>Rating</span>
-                        <span>Price</span>
-                        <span>Comment</span>
-                        <span>Action</span>
-                    </li>
-                    <li>
-                        <span className={styles.Number}>1</span>
-                        <span className={styles.image}>image here</span>
-                        <span className={styles.name}>Adidas</span>
-                        <span className={styles.rating}>5</span>
-                        <span className={styles.price}>$50</span>
-                        <span className={styles.price}>comment here</span>
-                        <span className={styles.action}></span>
-                        <FontAwesomeIcon
-                            icon='ellipsis-v'
-                            color='black'
-                            size='sm'
-                        />
-                    </li>
-                    <li>
-                        <span className={styles.Number}>2</span>
-                        <span className={styles.image}>image here</span>
-                        <span className={styles.name}>Adidas</span>
-                        <span className={styles.rating}>5</span>
-                        <span className={styles.price}>$50</span>
-                        <span className={styles.price}>comment here</span>
-                        <span className={styles.action}></span>
-                        <FontAwesomeIcon
-                            icon='ellipsis-v'
-                            color='black'
-                            size='sm'
-                        />
-                    </li>
-                    <li>
-                        <span className={styles.Number}>3</span>
-                        <span className={styles.image}>image here</span>
-                        <span className={styles.name}>Adidas</span>
-                        <span className={styles.rating}>5</span>
-                        <span className={styles.price}>$50</span>
-                        <span className={styles.price}>comment here</span>
-                        <span className={styles.action}></span>
-                        <FontAwesomeIcon
-                            icon='ellipsis-v'
-                            color='black'
-                            size='sm'
-                        />
-                    </li>
-                    <li>
-                        <span className={styles.Number}>4</span>
-                        <span className={styles.image}>image here</span>
-                        <span className={styles.name}>Adidas</span>
-                        <span className={styles.rating}>5</span>
-                        <span className={styles.price}>$50</span>
-                        <span className={styles.price}>comment here</span>
-                        <span className={styles.action}></span>
-                        <FontAwesomeIcon
-                            icon='ellipsis-v'
-                            color='black'
-                            size='sm'
-                        />
-                    </li>
-                </ul>
+                    <ul className={styles.productsContainer}>
+                        <li style={{ listStyle: 'none' }}>
+                            {
+                                headers.map((option, i) => (
+                                    <span key={i} className={styles.productCardHeader}>{option}</span>
+
+                                ))
+                            }
+                        </li>
+                        {
+                            items.map((option, i) => (
+                                <li key={i} className={styles.productCardItems}>
+                                    <span className={styles.itemNum}>{option}</span>
+                                    <span className={styles.itemImage}><img src="https://cleata.co/wp-content/uploads/2018/11/SEPATU-FAHSION-TC-219-SEPATU-WANITA-SLIP-ON.jpeg" alt="patu" /></span>
+                                    <span className={styles.itemName}>Sepatu XXI</span>
+                                    <span className={styles.itemPrice}>$100</span>
+                                    <span className={styles.itemComment}>zu zu zuzuzu zuzu, mipa nyam nyam2 nyam3</span>
+                                    <span className={styles.itemUsername}>dedy firmansyah</span>
+                                    <span className={styles.itemAction}>...</span>
+                                </li>
+                            ))
+                        }
+
+
+                    </ul>
+                </div>
             </div>
-
-
 
         );
     }
@@ -89,3 +75,4 @@ class Product extends Component {
 
 
 export { Product };
+
