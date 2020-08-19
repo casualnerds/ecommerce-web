@@ -1,0 +1,58 @@
+@import '../../themes/colors';
+@import '../../themes/fontType';
+
+.cartContainer {
+    width: 21.5vw;
+    border-radius: 0.2vw;
+    background-color: $scheme5;
+    box-shadow: 0 0 0.5vw $boxShadow2;
+
+    .titleContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8vw 1vw;
+
+        .titleChart {
+            font-family: $semiBold;
+            font-size: 0.9vw;
+            color: $scheme3;
+            margin-bottom: 0.5vw;
+
+            p {
+                &:nth-child(2) {
+                    font-family: $bold;
+                    font-size: 2vw;
+                }
+                &:nth-child(3) {
+                    font-family: $light;
+                    font-size: 0.7vw;
+                }
+            }
+        }
+
+        .iconContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $scheme4;
+            width: 4vw;
+            height: 4vw;
+            border-radius: 4vw;
+            border: 0.2vw solid $scheme3;
+
+            .icon {
+                color: $scheme3;
+                font-size: 1.8vw;
+            }
+        }
+    }
+
+    div {
+        &:nth-child(2) {
+            display: flex;
+            justify-content: center;
+            padding: 0.6vw;
+        }
+    }
+}

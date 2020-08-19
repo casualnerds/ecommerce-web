@@ -419,7 +419,7 @@
   background-color: #FFE1C7;
   border-radius: 9px;
   padding-left: 3vw;
-  border-left: 0.4vw solid #8C4A11;
+  border-left: 0.4vw solid #8c4a11;
   min-width: 20vw;
   height: 100%;
   -webkit-clip-path: circle(5% at 1.98vw 1.6vw);
@@ -436,7 +436,7 @@
 }
 
 .uploadImageContainer .tipsContainer .infoIcon {
-  color: #8C4A11;
+  color: #8c4a11;
   font-size: 1.2vw;
   position: absolute;
   top: 1vw;
@@ -448,13 +448,13 @@
   color: #999999;
   margin-top: 0.4vh;
   margin-bottom: 1vh;
-  color: #8C4A11;
+  color: #8c4a11;
 }
 
 .uploadImageContainer .tipsContainer p {
   font-family: "Nunito-Light";
   font-size: 0.7vw;
-  color: #8C4A11;
+  color: #8c4a11;
   margin-bottom: 0.3vh;
 }
 

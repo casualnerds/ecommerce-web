@@ -58,14 +58,14 @@
 
 .menuCard .menuIcon {
   font-size: 1vw;
-  color: #8C4A11;
+  color: #8c4a11;
 }
 
 .menuCard .menuName {
   position: absolute;
   font-family: "Nunito-Bold";
   font-size: 0.7vw;
-  color: #8C4A11;
+  color: #8c4a11;
   left: 1vw;
   -webkit-transform: scaleX(1);
           transform: scaleX(1);
@@ -91,6 +91,6 @@
 
 .menuCardCollapse:hover {
   width: 2.6vw;
-  background-color: #8C4A11;
+  background-color: #8c4a11;
 }
 /*# sourceMappingURL=SidebarLeft.module.css.map */
